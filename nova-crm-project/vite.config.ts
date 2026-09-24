@@ -36,16 +36,16 @@ export default defineConfig(({ command }) => ({
   },
 
   server: {
-  host: "::",
-  port: 8080,
+    host: "::",
+    port: 8080,
 
-  proxy: {
-    "/api": {
-      target: "http://localhost:5000",
-      changeOrigin: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+      },
     },
   },
-},
 
   plugins: [
     tailwindcss(),
@@ -68,7 +68,7 @@ export default defineConfig(({ command }) => ({
     ...(command === "build"
       ? [
         nitro({
-          defaultPreset: "cloudflare-module",
+          preset: "node-server",
         }),
       ]
       : []),
