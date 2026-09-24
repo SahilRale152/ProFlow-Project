@@ -1,0 +1,102 @@
+<!--
+============================================================================
+PORTFOLIO PAGE TRACKING SNIPPET
+============================================================================
+WHAT THIS IS FOR:
+  Your /visit redirect page can only measure ~1-2 seconds (the branded
+  loading screen) before handing off to your real portfolio page -- once
+  that top-level redirect happens, your tracking server loses JS access
+  and can't see how long the visitor actually stayed.
+
+  This snippet, pasted into YOUR REAL PORTFOLIO PAGE's HTML, fixes that.
+  It reads the lead's email/company (which RUN_CAMPAIGN.py already
+  appends to the link as ?lead_email=...&lead_company=...&lead_page=...
+  when it redirects them here) and sends heartbeat + "time spent" beacons
+  straight to your existing tracking server -- no new backend code needed,
+  it reuses the /visit-heartbeat and /visit-end endpoints that already
+  exist in RUN_CAMPAIGN.py.
+
+WHERE TO PASTE IT:
+  Just before the closing </body> tag of your actual portfolio page's
+  HTML (the real page at https://portfolio.orbitavanyatech.com/ -- NOT
+  the email template, NOT RUN_CAMPAIGN.py).
+
+REQUIREMENT:
+  This only works if you can edit the portfolio page's own HTML. If your
+  portfolio lives somewhere you don't control (e.g. Behance, a PDF, a
+  third-party site), this snippet can't be added there -- in that case
+  the ~1-2 sec loading-screen time from /visit is the only signal you'll
+  get for that link.
+
+WHAT TO EDIT:
+  Change TRACKING_SERVER below to match your live tracking domain
+  (same value as Config.TRACKING_DOMAIN in RUN_CAMPAIGN.py), e.g.
+  "https://track.orbitavanyatech.com".
+============================================================================
+-->
+<script>
+(function () {
+  var TRACKING_SERVER = "https://track.orbitavanyatech.com"; // <-- confirm/edit this
+
+  function getParam(name) {
+    var url = new URL(window.location.href);
+    return url.searchParams.get(name) || "";
+  }
+
+  var leadEmail   = getParam("lead_email");
+  var leadCompany = getParam("lead_company");
+  var leadPage    = getParam("lead_page") || "Portfolio";
+
+  // Only track if this visit actually came from a campaign link
+  // (i.e. has a lead_email param) -- don't track random/direct visitors.
+  if (!leadEmail) return;
+
+  var startTime = Date.now();
+
+  function secondsSpent() {
+    return Math.round((Date.now() - startTime) / 1000);
+  }
+
+  function sendBeacon(path, extraSeconds) {
+    var url = TRACKING_SERVER + path +
+      "?email=" + encodeURIComponent(leadEmail) +
+      "&company=" + encodeURIComponent(leadCompany) +
+      "&page=" + encodeURIComponent(leadPage) +
+      "&seconds=" + extraSeconds;
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(url);
+    } else {
+      // Fallback for older browsers
+      var img = new Image();
+      img.src = url;
+    }
+  }
+
+  // Heartbeat every 10s while the tab is open and visible --
+  // catches engaged visitors even if they never close the tab.
+  var lastHeartbeat = 0;
+  setInterval(function () {
+    if (document.visibilityState === "visible") {
+      var now = secondsSpent();
+      var delta = now - lastHeartbeat;
+      if (delta > 0) {
+        sendBeacon("/visit-heartbeat", delta);
+        lastHeartbeat = now;
+      }
+    }
+  }, 10000);
+
+  // Final beacon when they actually leave the page --
+  // catches any remaining seconds since the last heartbeat.
+  function sendFinal() {
+    var now = secondsSpent();
+    var delta = now - lastHeartbeat;
+    if (delta > 0) {
+      sendBeacon("/visit-end", delta);
+      lastHeartbeat = now;
+    }
+  }
+  window.addEventListener("beforeunload", sendFinal);
+  window.addEventListener("pagehide", sendFinal);
+})();
+</script>

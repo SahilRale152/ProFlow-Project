@@ -1,0 +1,1739 @@
+[
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 05:55:38",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 05:55:59",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 05:56:44",
+    "open_count": 3
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 09:13:17",
+    "open_count": 4
+  },
+  {
+    "event": "email_opened",
+    "email": "christian@accuranker.com",
+    "company": "AccuRanker",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 09:14:23",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 09:15:27",
+    "open_count": 1
+  },
+  {
+    "event": "link_clicked",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 15:11:24",
+    "clicked_at": "13-07-2026 09:16:11",
+    "click_count": 1,
+    "page": "",
+    "location": {
+      "country": "United States",
+      "city": "Boston",
+      "timezone": "America/New_York"
+    }
+  },
+  {
+    "event": "link_clicked",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 15:11:24",
+    "clicked_at": "13-07-2026 09:16:13",
+    "click_count": 2,
+    "page": "",
+    "location": {
+      "country": "United States",
+      "city": "Boston",
+      "timezone": "America/New_York"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 15:11:24",
+    "visit_number": 1,
+    "visited_at": "13-07-2026 09:16:15",
+    "page": "",
+    "location": {
+      "country": "United States",
+      "city": "Boston"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 15:11:24",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": ""
+  },
+  {
+    "event": "time_on_site",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 15:11:24",
+    "seconds_added": 3,
+    "total_time": "5 sec",
+    "page": ""
+  },
+  {
+    "event": "email_opened",
+    "email": "torben.carlsen@dfds.com",
+    "company": "DFDS Esbjerg - RO/RO Ferry Terminal",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 09:17:32",
+    "open_count": 1
+  },
+  {
+    "event": "link_clicked",
+    "email": "torben.carlsen@dfds.com",
+    "company": "DFDS Esbjerg - RO/RO Ferry Terminal",
+    "timestamp": "13-07-2026 15:11:24",
+    "clicked_at": "13-07-2026 09:17:50",
+    "click_count": 1,
+    "page": "",
+    "location": {
+      "country": "The Netherlands",
+      "city": "Amsterdam",
+      "timezone": "Europe/Amsterdam"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "torben.carlsen@dfds.com",
+    "company": "DFDS Esbjerg - RO/RO Ferry Terminal",
+    "timestamp": "13-07-2026 15:11:24",
+    "visit_number": 1,
+    "visited_at": "13-07-2026 09:17:51",
+    "page": "",
+    "location": {
+      "country": "The Netherlands",
+      "city": "Amsterdam"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "torben.carlsen@dfds.com",
+    "company": "DFDS Esbjerg - RO/RO Ferry Terminal",
+    "timestamp": "13-07-2026 15:11:24",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": ""
+  },
+  {
+    "event": "email_opened",
+    "email": "jens@accuranker.com",
+    "company": "AccuRanker",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 09:21:49",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "jordi@factorialhr.com",
+    "company": "Factorial HR",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 09:26:01",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "jiaqi@landbot.io",
+    "company": "Landbot",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 09:27:43",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:24",
+    "opened_at": "13-07-2026 09:28:48",
+    "open_count": 1
+  },
+  {
+    "event": "link_clicked",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:24",
+    "clicked_at": "13-07-2026 09:28:53",
+    "click_count": 1,
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin",
+      "timezone": "Europe/Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:24",
+    "visit_number": 1,
+    "visited_at": "13-07-2026 09:28:54",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:24",
+    "visit_number": 2,
+    "visited_at": "13-07-2026 09:28:55",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "link_clicked",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:25",
+    "clicked_at": "13-07-2026 09:28:55",
+    "click_count": 2,
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin",
+      "timezone": "Europe/Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:25",
+    "visit_number": 3,
+    "visited_at": "13-07-2026 09:28:56",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:25",
+    "visit_number": 4,
+    "visited_at": "13-07-2026 09:28:57",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:25",
+    "visit_number": 5,
+    "visited_at": "13-07-2026 09:28:58",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:25",
+    "visit_number": 6,
+    "visited_at": "13-07-2026 09:28:59",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 15:11:25",
+    "visit_number": 7,
+    "visited_at": "13-07-2026 09:29:00",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "email_opened",
+    "email": "petra@getbyrd.com",
+    "company": "Byrd Fulfillment",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:30:39",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "jesus@graphenea.com",
+    "company": "Graphenea",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:31:08",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "julio@bdeo.io",
+    "company": "Bdeo",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:31:46",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "lupina@fintonic.com",
+    "company": "Fintonic",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:32:22",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "albert@housfy.com",
+    "company": "Housfy",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:34:41",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "marco@translated.com",
+    "company": "Translated",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:36:31",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "luca@bendingspoons.com",
+    "company": "Bending Spoons",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:37:28",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "lorenzo@cubbit.io",
+    "company": "Cubbit",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:37:54",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "info@systechafrica.com",
+    "company": "Systech Limited",
+    "timestamp": "13-07-2026 15:11:25",
+    "opened_at": "13-07-2026 09:39:19",
+    "open_count": 1
+  },
+  {
+    "event": "link_clicked",
+    "email": "info@systechafrica.com",
+    "company": "Systech Limited",
+    "timestamp": "13-07-2026 15:11:25",
+    "clicked_at": "13-07-2026 09:39:46",
+    "click_count": 1,
+    "page": "",
+    "location": {
+      "country": "Kenya",
+      "city": "Nairobi",
+      "timezone": "Africa/Nairobi"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "info@systechafrica.com",
+    "company": "Systech Limited",
+    "timestamp": "13-07-2026 15:11:25",
+    "visit_number": 1,
+    "visited_at": "13-07-2026 09:39:47",
+    "page": "",
+    "location": {
+      "country": "Kenya",
+      "city": "Nairobi"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "info@systechafrica.com",
+    "company": "Systech Limited",
+    "timestamp": "13-07-2026 15:11:25",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": ""
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 05:55:38",
+    "open_count": 5
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 05:55:59",
+    "open_count": 6
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 05:56:44",
+    "open_count": 7
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 09:13:17",
+    "open_count": 8
+  },
+  {
+    "event": "email_opened",
+    "email": "christian@accuranker.com",
+    "company": "AccuRanker",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 09:14:23",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 09:15:27",
+    "open_count": 2
+  },
+  {
+    "event": "link_clicked",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 16:37:57",
+    "clicked_at": "13-07-2026 09:16:11",
+    "click_count": 3,
+    "page": "",
+    "location": {
+      "country": "United States",
+      "city": "Boston",
+      "timezone": "America/New_York"
+    }
+  },
+  {
+    "event": "link_clicked",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 16:37:57",
+    "clicked_at": "13-07-2026 09:16:13",
+    "click_count": 4,
+    "page": "",
+    "location": {
+      "country": "United States",
+      "city": "Boston",
+      "timezone": "America/New_York"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 16:37:57",
+    "visit_number": 2,
+    "visited_at": "13-07-2026 09:16:15",
+    "page": "",
+    "location": {
+      "country": "United States",
+      "city": "Boston"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 16:37:57",
+    "seconds_added": 2,
+    "total_time": "7 sec",
+    "page": ""
+  },
+  {
+    "event": "time_on_site",
+    "email": "jesper@healthtechhub.org",
+    "company": "Health Tech Hub Copenhagen",
+    "timestamp": "13-07-2026 16:37:57",
+    "seconds_added": 3,
+    "total_time": "10 sec",
+    "page": ""
+  },
+  {
+    "event": "email_opened",
+    "email": "torben.carlsen@dfds.com",
+    "company": "DFDS Esbjerg - RO/RO Ferry Terminal",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 09:17:32",
+    "open_count": 2
+  },
+  {
+    "event": "link_clicked",
+    "email": "torben.carlsen@dfds.com",
+    "company": "DFDS Esbjerg - RO/RO Ferry Terminal",
+    "timestamp": "13-07-2026 16:37:57",
+    "clicked_at": "13-07-2026 09:17:50",
+    "click_count": 2,
+    "page": "",
+    "location": {
+      "country": "The Netherlands",
+      "city": "Amsterdam",
+      "timezone": "Europe/Amsterdam"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "torben.carlsen@dfds.com",
+    "company": "DFDS Esbjerg - RO/RO Ferry Terminal",
+    "timestamp": "13-07-2026 16:37:57",
+    "visit_number": 2,
+    "visited_at": "13-07-2026 09:17:51",
+    "page": "",
+    "location": {
+      "country": "The Netherlands",
+      "city": "Amsterdam"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "torben.carlsen@dfds.com",
+    "company": "DFDS Esbjerg - RO/RO Ferry Terminal",
+    "timestamp": "13-07-2026 16:37:57",
+    "seconds_added": 2,
+    "total_time": "4 sec",
+    "page": ""
+  },
+  {
+    "event": "email_opened",
+    "email": "jens@accuranker.com",
+    "company": "AccuRanker",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 09:21:49",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "jordi@factorialhr.com",
+    "company": "Factorial HR",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 09:26:01",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "jiaqi@landbot.io",
+    "company": "Landbot",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 09:27:43",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "opened_at": "13-07-2026 09:28:48",
+    "open_count": 2
+  },
+  {
+    "event": "link_clicked",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "clicked_at": "13-07-2026 09:28:53",
+    "click_count": 3,
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin",
+      "timezone": "Europe/Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "visit_number": 8,
+    "visited_at": "13-07-2026 09:28:54",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "visit_number": 9,
+    "visited_at": "13-07-2026 09:28:55",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "link_clicked",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "clicked_at": "13-07-2026 09:28:55",
+    "click_count": 4,
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin",
+      "timezone": "Europe/Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "visit_number": 10,
+    "visited_at": "13-07-2026 09:28:56",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "visit_number": 11,
+    "visited_at": "13-07-2026 09:28:57",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "visit_number": 12,
+    "visited_at": "13-07-2026 09:28:58",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:57",
+    "visit_number": 13,
+    "visited_at": "13-07-2026 09:28:59",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "avi@travelperk.com",
+    "company": "TravelPerk",
+    "timestamp": "13-07-2026 16:37:58",
+    "visit_number": 14,
+    "visited_at": "13-07-2026 09:29:00",
+    "page": "",
+    "location": {
+      "country": "Ireland",
+      "city": "Dublin"
+    }
+  },
+  {
+    "event": "email_opened",
+    "email": "petra@getbyrd.com",
+    "company": "Byrd Fulfillment",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:30:39",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "jesus@graphenea.com",
+    "company": "Graphenea",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:31:08",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "julio@bdeo.io",
+    "company": "Bdeo",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:31:46",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "lupina@fintonic.com",
+    "company": "Fintonic",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:32:22",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "albert@housfy.com",
+    "company": "Housfy",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:34:41",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "marco@translated.com",
+    "company": "Translated",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:36:31",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "luca@bendingspoons.com",
+    "company": "Bending Spoons",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:37:28",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "lorenzo@cubbit.io",
+    "company": "Cubbit",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:37:54",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "info@systechafrica.com",
+    "company": "Systech Limited",
+    "timestamp": "13-07-2026 16:37:58",
+    "opened_at": "13-07-2026 09:39:19",
+    "open_count": 2
+  },
+  {
+    "event": "link_clicked",
+    "email": "info@systechafrica.com",
+    "company": "Systech Limited",
+    "timestamp": "13-07-2026 16:37:58",
+    "clicked_at": "13-07-2026 09:39:46",
+    "click_count": 2,
+    "page": "",
+    "location": {
+      "country": "Kenya",
+      "city": "Nairobi",
+      "timezone": "Africa/Nairobi"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "info@systechafrica.com",
+    "company": "Systech Limited",
+    "timestamp": "13-07-2026 16:37:58",
+    "visit_number": 2,
+    "visited_at": "13-07-2026 09:39:47",
+    "page": "",
+    "location": {
+      "country": "Kenya",
+      "city": "Nairobi"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "info@systechafrica.com",
+    "company": "Systech Limited",
+    "timestamp": "13-07-2026 16:37:58",
+    "seconds_added": 2,
+    "total_time": "4 sec",
+    "page": ""
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 17:35:13",
+    "opened_at": "13-07-2026 12:04:20",
+    "open_count": 9
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 17:35:13",
+    "clicked_at": "13-07-2026 12:04:26",
+    "click_count": 1,
+    "page": "",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 17:35:13",
+    "visit_number": 1,
+    "visited_at": "13-07-2026 12:04:26",
+    "page": "",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 17:35:13",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": ""
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 17:35:13",
+    "clicked_at": "13-07-2026 12:04:34",
+    "click_count": 2,
+    "page": "",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs",
+      "timezone": "America/Chicago"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 17:35:13",
+    "visit_number": 2,
+    "visited_at": "13-07-2026 12:04:34",
+    "page": "",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 17:35:13",
+    "seconds_added": 2,
+    "total_time": "4 sec",
+    "page": ""
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 17:35:13",
+    "seconds_added": 2,
+    "total_time": "6 sec",
+    "page": ""
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Copenhagen FinTech Lab",
+    "timestamp": "13-07-2026 22:08:53",
+    "opened_at": "13-07-2026 14:47:33",
+    "open_count": 10
+  },
+  {
+    "event": "email_opened",
+    "email": "daniel.mettler@2sic.com",
+    "company": "2sic internet solutions",
+    "timestamp": "14-07-2026 07:50:05",
+    "opened_at": "13-07-2026 20:04:05",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:21",
+    "opened_at": "01-08-2026 13:18:47",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:21",
+    "opened_at": "01-08-2026 13:18:47",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:23",
+    "opened_at": "02-08-2026 17:05:06",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:23",
+    "opened_at": "09-08-2026 17:18:51",
+    "open_count": 3
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:23",
+    "opened_at": "09-08-2026 17:19:10",
+    "open_count": 4
+  },
+  {
+    "event": "link_clicked",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:23",
+    "clicked_at": "09-08-2026 17:19:13",
+    "click_count": 1,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:23",
+    "visit_number": 1,
+    "visited_at": "09-08-2026 17:19:13",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:23",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "opened_at": "09-08-2026 17:22:11",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "opened_at": "09-08-2026 18:00:24",
+    "open_count": 3
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "clicked_at": "09-08-2026 18:00:26",
+    "click_count": 1,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "visit_number": 1,
+    "visited_at": "09-08-2026 18:00:26",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": "Website"
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "clicked_at": "09-08-2026 18:00:30",
+    "click_count": 2,
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "New York",
+      "timezone": "America/New_York"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "visit_number": 2,
+    "visited_at": "09-08-2026 18:00:31",
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "New York"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "seconds_added": 2,
+    "total_time": "4 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:23",
+    "opened_at": "09-08-2026 18:01:39",
+    "open_count": 4
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "clicked_at": "09-08-2026 18:01:44",
+    "click_count": 3,
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs",
+      "timezone": "America/Chicago"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "visit_number": 3,
+    "visited_at": "09-08-2026 18:01:44",
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "seconds_added": 2,
+    "total_time": "6 sec",
+    "page": "Website"
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "seconds_added": 2,
+    "total_time": "8 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "opened_at": "09-08-2026 18:01:52",
+    "open_count": 5
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "clicked_at": "09-08-2026 18:01:55",
+    "click_count": 4,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "visit_number": 4,
+    "visited_at": "09-08-2026 18:01:55",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "seconds_added": 2,
+    "total_time": "10 sec",
+    "page": "Website"
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "clicked_at": "09-08-2026 18:02:02",
+    "click_count": 5,
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs",
+      "timezone": "America/Chicago"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "visit_number": 5,
+    "visited_at": "09-08-2026 18:02:02",
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:24",
+    "seconds_added": 2,
+    "total_time": "12 sec",
+    "page": "Website"
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:25",
+    "seconds_added": 2,
+    "total_time": "14 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:25",
+    "opened_at": "09-08-2026 18:03:03",
+    "open_count": 5
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:25",
+    "opened_at": "09-08-2026 18:03:04",
+    "open_count": 6
+  },
+  {
+    "event": "link_clicked",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:25",
+    "clicked_at": "09-08-2026 18:03:07",
+    "click_count": 2,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:25",
+    "visit_number": 2,
+    "visited_at": "09-08-2026 18:03:07",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:25",
+    "seconds_added": 2,
+    "total_time": "4 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:47",
+    "opened_at": "01-08-2026 13:18:47",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:47",
+    "opened_at": "01-08-2026 13:18:47",
+    "open_count": 1
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:49",
+    "opened_at": "02-08-2026 17:05:06",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:49",
+    "opened_at": "09-08-2026 17:18:51",
+    "open_count": 3
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:49",
+    "opened_at": "09-08-2026 17:19:10",
+    "open_count": 4
+  },
+  {
+    "event": "link_clicked",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:49",
+    "clicked_at": "09-08-2026 17:19:13",
+    "click_count": 1,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:49",
+    "visit_number": 1,
+    "visited_at": "09-08-2026 17:19:13",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:49",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "opened_at": "09-08-2026 17:22:11",
+    "open_count": 2
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "opened_at": "09-08-2026 18:00:24",
+    "open_count": 3
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "clicked_at": "09-08-2026 18:00:26",
+    "click_count": 1,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "visit_number": 1,
+    "visited_at": "09-08-2026 18:00:26",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": "Website"
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "clicked_at": "09-08-2026 18:00:30",
+    "click_count": 2,
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "New York",
+      "timezone": "America/New_York"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "visit_number": 2,
+    "visited_at": "09-08-2026 18:00:31",
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "New York"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "seconds_added": 2,
+    "total_time": "4 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "opened_at": "09-08-2026 18:01:39",
+    "open_count": 4
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "clicked_at": "09-08-2026 18:01:44",
+    "click_count": 3,
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs",
+      "timezone": "America/Chicago"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "visit_number": 3,
+    "visited_at": "09-08-2026 18:01:44",
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "seconds_added": 2,
+    "total_time": "6 sec",
+    "page": "Website"
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:49",
+    "seconds_added": 2,
+    "total_time": "8 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:50",
+    "opened_at": "09-08-2026 18:01:52",
+    "open_count": 5
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:50",
+    "clicked_at": "09-08-2026 18:01:55",
+    "click_count": 4,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:50",
+    "visit_number": 4,
+    "visited_at": "09-08-2026 18:01:55",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:50",
+    "seconds_added": 2,
+    "total_time": "10 sec",
+    "page": "Website"
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:50",
+    "clicked_at": "09-08-2026 18:02:02",
+    "click_count": 5,
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs",
+      "timezone": "America/Chicago"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:50",
+    "visit_number": 5,
+    "visited_at": "09-08-2026 18:02:02",
+    "page": "Website",
+    "location": {
+      "country": "United States",
+      "city": "Council Bluffs"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:50",
+    "seconds_added": 2,
+    "total_time": "12 sec",
+    "page": "Website"
+  },
+  {
+    "event": "time_on_site",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 15:26:50",
+    "seconds_added": 2,
+    "total_time": "14 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:50",
+    "opened_at": "09-08-2026 18:03:03",
+    "open_count": 5
+  },
+  {
+    "event": "email_opened",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:50",
+    "opened_at": "09-08-2026 18:03:04",
+    "open_count": 6
+  },
+  {
+    "event": "link_clicked",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:50",
+    "clicked_at": "09-08-2026 18:03:07",
+    "click_count": 2,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:50",
+    "visit_number": 2,
+    "visited_at": "09-08-2026 18:03:07",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "mansipatil31122004@gmail.com",
+    "company": "Factorial HR",
+    "timestamp": "10-08-2026 15:26:50",
+    "seconds_added": 2,
+    "total_time": "4 sec",
+    "page": "Website"
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 16:01:30",
+    "opened_at": "10-08-2026 10:08:51",
+    "open_count": 6
+  },
+  {
+    "event": "email_opened",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 16:01:30",
+    "opened_at": "10-08-2026 10:08:53",
+    "open_count": 7
+  },
+  {
+    "event": "link_clicked",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 16:01:30",
+    "clicked_at": "10-08-2026 10:08:56",
+    "click_count": 6,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "patilmansiv12@gmail.com",
+    "company": "Plain Concepts",
+    "timestamp": "10-08-2026 16:01:30",
+    "visit_number": 6,
+    "visited_at": "10-08-2026 10:08:56",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "email_opened",
+    "email": "vishakhapatil853@gmail.com",
+    "company": "The Hub",
+    "timestamp": "13-08-2026 17:01:35",
+    "opened_at": "13-08-2026 11:31:06",
+    "open_count": 1
+  },
+  {
+    "event": "link_clicked",
+    "email": "vishakhapatil853@gmail.com",
+    "company": "The Hub",
+    "timestamp": "13-08-2026 17:01:35",
+    "clicked_at": "13-08-2026 11:31:10",
+    "click_count": 1,
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune",
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  {
+    "event": "website_visit",
+    "email": "vishakhapatil853@gmail.com",
+    "company": "The Hub",
+    "timestamp": "13-08-2026 17:01:35",
+    "visit_number": 1,
+    "visited_at": "13-08-2026 11:31:10",
+    "page": "Website",
+    "location": {
+      "country": "India",
+      "city": "Pune"
+    }
+  },
+  {
+    "event": "time_on_site",
+    "email": "vishakhapatil853@gmail.com",
+    "company": "The Hub",
+    "timestamp": "13-08-2026 17:01:35",
+    "seconds_added": 2,
+    "total_time": "2 sec",
+    "page": "Website",
+    "end_at": "13-08-2026 11:31:12"
+  },
+  {
+    "event": "email_opened",
+    "email": "vishakhapatil853@gmail.com",
+    "company": "The Hub",
+    "timestamp": "13-08-2026 17:02:35",
+    "opened_at": "13-08-2026 11:32:09",
+    "open_count": 2
+  }
+]

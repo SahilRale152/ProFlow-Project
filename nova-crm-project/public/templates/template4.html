@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engagement Proposal - {{CUSTOMER_COMPANY_NAME}}</title>
+<style>
+
+@page { size: A4; margin: 0; }
+
+:root {
+  --paper: #F7F4EC;
+  --ink: #2A2622;
+  --ink-soft: #6B6255;
+  --rule: #DAD3C2;
+  --burgundy: #7A2E2E;
+  --burgundy-soft: #A85C57;
+  --ghost: #E6DFCE;
+  --page-width: 210mm;
+  --page-height: 297mm;
+  --pad-x: 16mm;
+  --pad-top: 15mm;
+  --pad-bottom: 15mm;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background: #E2DDD0;
+  font-size: 10.4pt;
+  line-height: 1.55;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.page {
+  width: var(--page-width);
+  min-height: var(--page-height);
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  margin: 0 auto 12px;
+  background: var(--paper);
+  position: relative;
+  break-after: page;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+}
+.page:last-child { break-after: auto; page-break-after: auto; }
+
+.masthead {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7.4pt;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+.masthead strong { color: var(--ink); font-family: Georgia, serif; font-size: 9pt; }
+
+.page-content { flex: 1 0 auto; display: grid; grid-template-columns: 20mm 1fr; column-gap: 8mm; }
+
+.folio { display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--rule); }
+.folio .num { font-size: 22pt; color: var(--ghost); font-weight: 700; line-height: 1; margin-top: 2mm; }
+.folio .brand-v {
+  writing-mode: vertical-rl;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7pt;
+  letter-spacing: .18em;
+  color: var(--ink-soft);
+  margin-top: auto;
+  margin-bottom: 4mm;
+}
+
+.page-footer {
+  flex: 0 0 auto;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7.2pt;
+  color: var(--ink-soft);
+}
+.page-footer .center { text-align: center; }
+.page-footer .right { text-align: right; }
+.footer-brand { font-weight: 700; color: var(--burgundy); font-family: Georgia, serif; }
+
+h1, h2, h3, p, ul, ol, table { break-inside: auto; page-break-inside: auto; }
+h2, h3 { break-after: avoid; page-break-after: avoid; }
+
+.section { margin-bottom: 16px; break-inside: avoid; page-break-inside: avoid; }
+.section.allow-split { break-inside: auto; page-break-inside: auto; }
+.section:first-child > p:first-of-type::first-letter {
+  font-size: 2.5em; font-weight: 700; float: left; line-height: .85;
+  padding-right: 4px; padding-top: 2px; color: var(--burgundy);
+}
+
+h2.t {
+  color: var(--ink);
+  font-size: 18pt;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--burgundy);
+  padding-bottom: 4px;
+  display: inline-block;
+}
+h3 {
+  color: var(--burgundy);
+  font-size: 12pt;
+  line-height: 1.2;
+  margin: 13px 0 5px;
+  font-weight: 700;
+  font-style: italic;
+}
+p { margin: 0 0 9px; orphans: 3; widows: 3; }
+strong { font-weight: 700; }
+.accent { color: var(--burgundy); font-weight: 700; }
+
+ul { margin: 5px 0 10px; padding-left: 0; list-style: none; column-count: 1; }
+li {
+  margin: 3px 0; padding-left: 13px; position: relative;
+}
+li::before { content: "\2013"; position: absolute; left: 0; color: var(--burgundy-soft); font-weight: 700; }
+
+/* ---- cover: magazine masthead ---- */
+.cover-page { padding: 14mm 16mm 14mm; }
+.cover-page .page-content { display: block; }
+.cover-top {
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 3px solid var(--ink); padding-bottom: 6px; margin-bottom: 10mm;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.cover-top .brand { font-size: 8.5pt; letter-spacing: .1em; color: var(--ink-soft); }
+.cover-top img { height: 10mm; }
+.cover-kicker {
+  font-family: Arial, Helvetica, sans-serif; font-size: 8.5pt; letter-spacing: .12em;
+  color: var(--burgundy); margin-bottom: 4mm;
+}
+.cover-title { color: var(--ink); font-size: 34pt; line-height: 1.02; margin: 0 0 4px; font-weight: 700; }
+.cover-subtitle { color: var(--ink-soft); font-size: 13pt; line-height: 1.3; margin: 0 0 9mm; font-style: italic; }
+.cover-image {
+  width: 100%; height: 100mm; margin-bottom: 9mm;
+  background-image: var(--cover-img, linear-gradient(150deg, #2A2622, #7A2E2E));
+  background-size: cover; background-position: center; position: relative;
+}
+.cover-caption { position: absolute; left: 5mm; bottom: 5mm; color: #F3E9DD; font-size: 9pt; font-style: italic; max-width: 85%; }
+.cover-meta {
+  font-family: Arial, Helvetica, sans-serif; font-size: 8.3pt; line-height: 1.6; color: var(--ink-soft);
+  border-top: 1px solid var(--rule); padding-top: 6mm;
+}
+.cover-meta p { margin-bottom: 6px; }
+.cover-meta strong { color: var(--ink); font-family: Georgia, serif; }
+
+/* ---- toc ---- */
+.toc { list-style: none; margin: 0; padding: 0; font-size: 10.2pt; }
+.toc li {
+  display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--rule);
+}
+.toc li .n { font-family: Arial, sans-serif; font-size: 8pt; color: var(--burgundy-soft); margin-right: 8px; }
+
+/* ---- rule-only editorial tables ---- */
+table.editorial { width: 100%; border-collapse: collapse; margin: 8px 0 10px; font-size: 9.6pt; }
+table.editorial th {
+  text-align: left; font-weight: 700; font-style: italic; color: var(--burgundy);
+  border-bottom: 2px solid var(--ink); padding: 5px 4px; font-size: 9pt;
+}
+table.editorial td { border-bottom: 1px solid var(--rule); padding: 6px 4px; vertical-align: top; }
+table.editorial td.num, table.editorial th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* snapshot as a definition list */
+.deflist { margin: 8px 0; }
+.deflist .row {
+  display: flex; justify-content: space-between; gap: 10px;
+  padding: 5px 0; border-bottom: 1px solid var(--rule);
+}
+.deflist .k { font-family: Arial, Helvetica, sans-serif; font-size: 8pt; letter-spacing: .05em; color: var(--ink-soft); }
+.deflist .v { font-weight: 700; text-align: right; }
+
+/* timeline as numbered editorial list */
+.numbered-timeline { margin: 10px 0; }
+.nt-row { display: grid; grid-template-columns: 12mm 22mm 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.nt-row .big-num { font-size: 15pt; color: var(--ghost); font-weight: 700; }
+.nt-row .dur { font-family: Arial, Helvetica, sans-serif; font-size: 8.2pt; color: var(--burgundy-soft); }
+.nt-row .focus { font-size: 9.8pt; }
+
+.price-note { font-family: Arial, Helvetica, sans-serif; font-size: 7.8pt; color: var(--ink-soft); margin-top: 4px; }
+
+.signature { margin-top: 10px; break-inside: avoid; page-break-inside: avoid; border-top: 1px solid var(--rule); padding-top: 8px; }
+.signature p { margin-bottom: 3px; font-style: italic; }
+.signature .name { font-weight: 700; font-size: 12pt; font-style: normal; }
+
+img { max-width: 100%; height: auto; break-inside: avoid; page-break-inside: avoid; }
+
+@media screen { body { padding: 14px 0; } .page { box-shadow: 0 2px 12px rgba(0,0,0,.12); } }
+@media print { html, body { background: #fff; } .page { margin: 0; box-shadow: none; } }
+
+</style>
+</head>
+<body>
+
+<section class="page cover-page">
+  <div class="cover-top">
+    <span class="brand">ORBITAVANYA TECH LLP &nbsp;/&nbsp; AVANYAEDGE</span>
+    <img src="/image/Picture2.png" alt="OrbitAvanya Tech">
+  </div>
+  <div class="cover-kicker">ENGAGEMENT PROPOSAL</div>
+  <h1 class="cover-title">Integrated eNotifications</h1>
+  <p class="cover-subtitle">A Service Pilot via Direct Secure Messaging, prepared for {{CUSTOMER_COMPANY_NAME}}</p>
+  <div class="cover-image" data-cover-style="{{COVER_IMAGE_STYLE}}">
+    <div class="cover-caption">Integrated eNotifications Service Pilot via Direct Secure Messaging</div>
+  </div>
+  <div class="cover-meta">
+    <p>Prepared for: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></p>
+    <p>Attention: <strong>{{CEO_NAME}}</strong> &nbsp;|&nbsp; Email: <strong>{{CUSTOMER_EMAIL}}</strong></p>
+    <p>
+      Prepared by: Pradeep Kumar Singh &mdash; Director, OrbitAvanya Tech LLP (AvanyaEdge) |
+      Proposal Date: {{PROPOSAL_DATE}} | Validity: 90 days from proposal date |
+      <strong>Registered U.S. Government Contractor UEI: D19VM1JR7MN9</strong> |
+      <strong>GeM Seller ID: MZKP2500129966592345</strong> |
+      Skill India Training Partner (TP ID): 321291 | NATO Cage Code: 7719Y |
+      D-U-N-S&reg;: 772678096
+    </p>
+  </div>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">02</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><h2 class="t">Contents</h2>
+<ul class="toc"><li><span><span class="n">01</span>Executive Summary</span></li>
+<li><span><span class="n">02</span>Company Profile</span></li>
+<li><span><span class="n">03</span>Engagement Summary</span></li>
+<li><span><span class="n">04</span>Target Engagement Snapshot</span></li>
+<li><span><span class="n">05</span>Understanding of Requirements</span></li>
+<li><span><span class="n">06</span>Our Proposed Solution</span></li>
+<li><span><span class="n">07</span>Scope of Work</span></li>
+<li><span><span class="n">08</span>Key Functional Features</span></li>
+<li><span><span class="n">09</span>Technical Architecture</span></li>
+<li><span><span class="n">10</span>Technology Stack</span></li>
+<li><span><span class="n">11</span>Security &amp; Compliance</span></li>
+<li><span><span class="n">12</span>System Integration</span></li>
+<li><span><span class="n">13</span>Implementation Plan</span></li>
+<li><span><span class="n">14</span>Project Management Approach</span></li>
+<li><span><span class="n">15</span>Engagement Timeline</span></li>
+<li><span><span class="n">16</span>Deliverables</span></li>
+<li><span><span class="n">17</span>Quality Assurance</span></li>
+<li><span><span class="n">18</span>Training &amp; Capacity Building</span></li>
+<li><span><span class="n">19</span>Support &amp; AMC</span></li>
+<li><span><span class="n">20</span>Service Level Agreement (SLA)</span></li>
+<li><span><span class="n">21</span>Engagement Governance</span></li>
+<li><span><span class="n">22</span>Risk Management</span></li>
+<li><span><span class="n">23</span>Compliance Matrix</span></li>
+<li><span><span class="n">24</span>Relevant Experience</span></li>
+<li><span><span class="n">25</span>Client References</span></li>
+<li><span><span class="n">26</span>Certifications</span></li>
+<li><span><span class="n">27</span>Assumptions</span></li>
+<li><span><span class="n">28</span>Annexures</span></li>
+<li><span><span class="n">29</span>Your Investment</span></li></ul></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 2</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">03</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><h2 class="t">Executive Summary</h2>
+<p>OrbitAvanya Tech LLP (AvanyaEdge) is pleased to submit this proposal, <strong>Integrated eNotifications Service Pilot via Direct Secure Messaging</strong>, prepared specifically for <strong class="accent">{{CUSTOMER_COMPANY_NAME}}</strong>. Drawing on our experience across <strong>eNotifications Service</strong>, this engagement is designed to address <strong>Secure Notification Systems</strong> through a secure, scalable, and future-ready platform built on modern, industry-standard technology.</p>
+<p>OrbitAvanya Tech LLP proposes to deliver this engagement using proven, secure, and scalable methodologies, with a strong focus on usability, performance, security, transparency, and maintainability. The engagement includes requirement analysis, solution design, development, testing, deployment, training, documentation, implementation support, and ongoing Operations &amp; Maintenance (O&amp;M) services, ensuring both immediate delivery and long-term reliability. With extensive expertise in enterprise applications, workflow automation, AI-enabled solutions, and government-oriented digital transformation, OrbitAvanya Tech LLP is committed to delivering an outcome centered on <strong>Timely and Reliable Notifications</strong> for <strong class="accent">{{CUSTOMER_COMPANY_NAME}}</strong>.</p>
+<div class="signature"><p>Respectfully,</p><div class="name">Pradeep Kumar Singh</div><div>Director</div><div>Microsoft Certified Developer &amp; AI Expert, OrbitAvanya Tech LLP (AvanyaEdge)</div></div></div>
+<div class="section"><h2 class="t">Company Profile</h2>
+<h3>About Us</h3>
+<p>OrbitAvanya Tech LLP (AvanyaEdge) is an ISO-certified technology consulting and digital transformation company specializing in enterprise software solutions, workflow automation systems, ERP platforms, AI-enabled applications, and government-oriented digital solutions. Headquartered in Mumbai, Maharashtra, the company focuses on delivering secure, scalable, innovative, and future-ready technology platforms for government departments, enterprises, educational institutions, and organizations across multiple sectors. OrbitAvanya Tech LLP is a Registered U.S. Government Contractor and Government e-Marketplace (GeM) Registered Seller, recognized across national and international procurement and compliance platforms.</p>
+<h3>Certifications &amp; Compliance</h3>
+<ul><li>ISO 9001 Certified</li>
+<li>ISO/IEC 27001 Certified</li>
+<li>GDPR Compliance Ready</li>
+<li>CMMI Level 3 Process-Oriented Organization</li></ul>
+<h3>Registrations &amp; Certifications</h3>
+<ul><li>UEI: D19VM1JR7MN9</li>
+<li>NATO Cage Code: 7719Y</li>
+<li>D-U-N-S® Number: 772678096</li>
+<li>Skill India TP ID: 321291</li>
+<li>GeM Seller ID: MZKP2500129966592345</li></ul></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 3</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">04</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><h3>Core Services</h3>
+<ul><li>Enterprise Application Development</li>
+<li>Workflow Automation Systems</li>
+<li>Contractor Management Systems (CMS)</li>
+<li>ERP &amp; LMS Solutions</li>
+<li>E-Governance Platforms</li>
+<li>AI-Powered Applications</li>
+<li>Cloud &amp; Infrastructure Services</li>
+<li>API &amp; Third-Party Integrations</li></ul>
+<h3>Why Choose Us</h3>
+<ul><li>Registered U.S. Government Contractor</li>
+<li>GeM Registered Seller</li>
+<li>ISO 9001 &amp; ISO/IEC 27001 Certified</li>
+<li>GDPR Compliance Ready</li>
+<li>CMMI Level 3 Process-Oriented Organization</li>
+<li>Expertise in Government Digital Transformation Projects</li>
+<li>Secure &amp; Scalable Technology Architecture</li>
+<li>End-to-End Project Implementation</li>
+<li>Dedicated Technical &amp; Support Team</li>
+<li>Long-Term Operations &amp; Maintenance Support</li></ul>
+<h3>Company Information</h3>
+<p>Company Name: OrbitAvanya Tech LLP (AvanyaEdge)<br>Registered Office: Shastri Nagar CHS, Vashi Naka, Near Hanuman Mandir, Chembur, Mumbai – 400074, Maharashtra, India<br>Website: www.orbitavanyatech.com | portfolio.orbitavanyatech.com<br>Email: info@orbitavanyatech.com<br>Phone: +91 7021950643<br>Leadership: Pradeep Kumar Singh, Director, Microsoft Certified Developer &amp; AI Expert, OrbitAvanya Tech LLP (AvanyaEdge)</p></div>
+<div class="section"><h2 class="t">Engagement Summary</h2>
+<h3>What We Propose</h3>
+<p>OrbitAvanya Tech LLP (AvanyaEdge) proposes to design, develop, implement, deploy, and maintain <strong>Integrated eNotifications Service Pilot via Direct Secure Messaging</strong> for <strong class="accent">{{CUSTOMER_COMPANY_NAME}}</strong>. The proposed engagement includes complete end-to-end services covering requirement analysis, UI/UX design, application development, workflow automation, testing, deployment, training, Operations &amp; Maintenance (O&amp;M), and implementation support.</p>
+<ul><li>One-Time Development &amp; Deployment</li>
+<li>Training &amp; Capacity Building</li>
+<li>One Year Operations &amp; Maintenance (O&amp;M) Support</li>
+<li>Optional Future Enhancements &amp; Integrations</li></ul></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 4</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">05</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><h3>Why This Engagement, Why Now</h3>
+<p>Organizations operating in <strong>eNotifications Service</strong> increasingly require modern, centralized digital platforms to replace manual, fragmented processes. Left unaddressed, <strong>Secure Notification Systems</strong> can result in delays, reduced visibility, and rising operational overhead.</p>
+<ul><li>Transparent digital workflows</li>
+<li>Faster processing and turnaround</li>
+<li>Centralized data management</li>
+<li>Real-time monitoring and reporting</li>
+<li>Improved coordination across teams</li>
+<li>Enhanced accountability and auditability</li>
+<li>Secure document handling and verification</li>
+<li>Reduced manual workload and operational overhead</li></ul></div>
+<div class="section"><h3>Engagement Outcome</h3>
+<p>OrbitAvanya Tech LLP is committed to delivering an outcome centered on <strong>Timely and Reliable Notifications</strong>, aligned with <strong class="accent">{{CUSTOMER_COMPANY_NAME}}</strong>'s objectives, with the reliability, scalability, and long-term support the engagement requires.</p></div>
+<div class="section"><h2 class="t">Target Engagement Snapshot</h2>
+<div class="deflist"><div class="row"><span class="k">Target Client</span><span class="v">{{CUSTOMER_COMPANY_NAME}}</span></div>
+<div class="row"><span class="k">UEI</span><span class="v">N/A</span></div>
+<div class="row"><span class="k">CAGE Code</span><span class="v">N/A</span></div>
+<div class="row"><span class="k">Primary NAICS Code</span><span class="v">541519</span></div>
+<div class="row"><span class="k">Primary NAICS Description</span><span class="v">Other Computer Related Services</span></div>
+<div class="row"><span class="k">Entity Structure</span><span class="v">N/A</span></div>
+<div class="row"><span class="k">Small Business</span><span class="v">No</span></div>
+<div class="row"><span class="k">Recommended Template</span><span class="v">GOVERNMENT_PSU</span></div></div>
+<p><strong class="accent">{{CUSTOMER_COMPANY_NAME}}</strong> is navigating <strong>Secure Notification Systems</strong> — a challenge we've seen up close in <strong>eNotifications Service</strong>. OrbitAvanya's approach is built around one outcome: <strong>Timely and Reliable Notifications</strong>.</p></div>
+<div class="section"><h2 class="t">Understanding of Requirements</h2>
+<p>{{CUSTOMER_COMPANY_NAME}} requires an eNotifications service that can provide timely and secure notifications to its stakeholders. This service must be developed and piloted in a way that ensures compliance with relevant regulations and standards. OrbitAvanya Tech LLP has a deep understanding of the agency's requirements and is well-equipped to support this initiative.</p></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 5</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">06</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><h2 class="t">Our Proposed Solution</h2>
+<p>Our proposed solution involves the development and pilot of an eNotifications service that leverages secure and reliable technologies. The service will be designed to provide timely and secure notifications to stakeholders, while ensuring compliance with relevant regulations and standards.</p></div>
+<div class="section"><h2 class="t">Scope of Work</h2>
+<p>The scope of work for this project includes the development and pilot of the eNotifications service, as well as the provision of training and support to agency staff. OrbitAvanya Tech LLP will work closely with the agency to ensure that the solution meets its requirements and is delivered on time and within budget.</p></div>
+<div class="section"><h2 class="t">Key Functional Features</h2>
+<p>The eNotifications service will have a range of functional features, including the ability to send secure and reliable notifications to stakeholders. The service will also have a user-friendly interface, allowing agency staff to easily manage and track notifications.</p></div>
+<div class="section"><h2 class="t">Technical Architecture</h2>
+<p>The technical architecture for the eNotifications service will be designed to ensure security, reliability, and scalability. The service will be built using a range of technologies, including secure messaging protocols and cloud-based infrastructure.</p></div>
+<div class="section"><h2 class="t">Technology Stack</h2>
+<p>The technology stack for the eNotifications service will include a range of tools and technologies, such as secure messaging protocols, cloud-based infrastructure, and user-friendly interfaces. OrbitAvanya Tech LLP has experience working with these technologies and is well-equipped to support the agency's requirements.</p></div>
+<div class="section"><h2 class="t">Security &amp; Compliance</h2>
+<p>Security is a top priority for the eNotifications service. The service will be designed to ensure the secure transmission of notifications, and will comply with relevant regulations and standards. OrbitAvanya Tech LLP has a strong track record of delivering secure solutions for government agencies.</p></div>
+<div class="section"><h2 class="t">System Integration</h2>
+<p>The eNotifications service will be integrated with existing agency systems, allowing for seamless communication and data exchange. OrbitAvanya Tech LLP has experience integrating solutions with a range of systems and technologies.</p></div>
+<div class="section"><h2 class="t">Implementation Plan</h2>
+<p>The implementation plan for the eNotifications service will involve a range of activities, including development, testing, and deployment. OrbitAvanya Tech LLP will work closely with the agency to ensure that the solution is delivered on time and within budget.</p></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 6</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">07</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><div class="numbered-timeline"><div class="nt-row"><span class="big-num">01</span><span class="dur">Week 1</span><span class="focus">Requirement Gathering &amp; Workflow Analysis</span></div>
+<div class="nt-row"><span class="big-num">02</span><span class="dur">Week 2</span><span class="focus">UI/UX Design &amp; System Architecture</span></div>
+<div class="nt-row"><span class="big-num">03</span><span class="dur">Week 3–6</span><span class="focus">Core Application Development</span></div>
+<div class="nt-row"><span class="big-num">04</span><span class="dur">Week 7</span><span class="focus">Integration, Testing &amp; QA</span></div>
+<div class="nt-row"><span class="big-num">05</span><span class="dur">Week 8</span><span class="focus">Deployment &amp; User Acceptance Testing</span></div>
+<div class="nt-row"><span class="big-num">06</span><span class="dur">Week 9</span><span class="focus">Training &amp; Go-Live Support</span></div>
+<div class="nt-row"><span class="big-num">07</span><span class="dur">Week 10 onwards</span><span class="focus">Operations &amp; Maintenance (One Year Support)</span></div></div></div>
+<div class="section"><h2 class="t">Project Management Approach</h2>
+<p>OrbitAvanya Tech LLP will provide project management services to support the delivery of the eNotifications service. Our team has experience managing complex IT projects for government agencies, and is well-equipped to support the agency's requirements.</p></div>
+<div class="section"><h2 class="t">Engagement Timeline</h2>
+<p>The timeline for the eNotifications service will be developed in consultation with the agency. OrbitAvanya Tech LLP is committed to delivering the solution on time and within budget.</p>
+<div class="numbered-timeline"><div class="nt-row"><span class="big-num">01</span><span class="dur">Week 1</span><span class="focus">Requirement Gathering &amp; Workflow Analysis</span></div>
+<div class="nt-row"><span class="big-num">02</span><span class="dur">Week 2</span><span class="focus">UI/UX Design &amp; System Architecture</span></div>
+<div class="nt-row"><span class="big-num">03</span><span class="dur">Week 3–6</span><span class="focus">Core Application Development</span></div>
+<div class="nt-row"><span class="big-num">04</span><span class="dur">Week 7</span><span class="focus">Integration, Testing &amp; QA</span></div>
+<div class="nt-row"><span class="big-num">05</span><span class="dur">Week 8</span><span class="focus">Deployment &amp; User Acceptance Testing</span></div>
+<div class="nt-row"><span class="big-num">06</span><span class="dur">Week 9</span><span class="focus">Training &amp; Go-Live Support</span></div>
+<div class="nt-row"><span class="big-num">07</span><span class="dur">Week 10 onwards</span><span class="focus">Operations &amp; Maintenance (One Year Support)</span></div></div></div>
+<div class="section"><h2 class="t">Deliverables</h2>
+<p>The deliverables for the eNotifications service will include the development and pilot of the service, as well as the provision of training and support to agency staff. OrbitAvanya Tech LLP will work closely with the agency to ensure that the solution meets its requirements.</p></div>
+<div class="section"><h2 class="t">Quality Assurance</h2>
+<p>Quality assurance is a critical component of the eNotifications service. OrbitAvanya Tech LLP will work closely with the agency to ensure that the solution meets its requirements and is delivered to a high standard.</p></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 7</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">08</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><h2 class="t">Training &amp; Capacity Building</h2>
+<p>OrbitAvanya Tech LLP will provide training and support to agency staff to ensure that they are able to effectively use the eNotifications service. Our team has experience providing training and support for government agencies.</p></div>
+<div class="section"><h2 class="t">Support &amp; AMC</h2>
+<p>OrbitAvanya Tech LLP will provide ongoing support and maintenance for the eNotifications service, to ensure that it continues to meet the agency's requirements. Our team is committed to delivering high-quality support and maintenance services.</p></div>
+<div class="section"><h2 class="t">Service Level Agreement (SLA)</h2>
+<p>The service level agreement for the eNotifications service will be developed in consultation with the agency. OrbitAvanya Tech LLP is committed to delivering high-quality services that meet the agency's requirements.</p></div>
+<div class="section"><h2 class="t">Engagement Governance</h2>
+<p>The governance structure for the eNotifications service will be developed in consultation with the agency. OrbitAvanya Tech LLP is committed to ensuring that the solution is delivered in a way that is transparent, accountable, and compliant with relevant regulations and standards.</p></div>
+<div class="section"><h2 class="t">Risk Management</h2>
+<p>Risk management is a critical component of the eNotifications service. OrbitAvanya Tech LLP will work closely with the agency to identify and mitigate risks, to ensure that the solution is delivered on time and within budget.</p></div>
+<div class="section"><h2 class="t">Compliance Matrix</h2>
+<p>The compliance matrix for the eNotifications service will be developed in consultation with the agency. OrbitAvanya Tech LLP is committed to ensuring that the solution complies with relevant regulations and standards.</p></div>
+<div class="section"><h2 class="t">Relevant Experience</h2>
+<p>OrbitAvanya Tech LLP has a range of case studies that demonstrate our experience and expertise in delivering complex IT projects for government agencies. These case studies highlight our ability to deliver high-quality solutions that meet the requirements of our clients.</p></div>
+<div class="section"><h2 class="t">Client References</h2>
+<p>OrbitAvanya Tech LLP has a range of client references that demonstrate our ability to deliver high-quality solutions for government agencies. These references highlight our commitment to delivering solutions that meet the requirements of our clients.</p></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 8</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">09</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><h2 class="t">Certifications</h2>
+<p>OrbitAvanya Tech LLP has a range of certifications that demonstrate our commitment to quality, security, and compliance. These certifications include ISO 9001:2015, ISO/IEC 27001:2022, and CMMI Level 3 Process-Oriented.</p></div>
+<div class="section"><h2 class="t">Assumptions</h2>
+<p>The assumptions for the eNotifications service include the availability of agency staff and resources, as well as the provision of necessary infrastructure and support. OrbitAvanya Tech LLP will work closely with the agency to ensure that these assumptions are valid and that the solution is delivered on time and within budget.</p></div>
+<div class="section"><h2 class="t">Annexures</h2>
+<p>The annexures for the eNotifications service will include a range of documents and information, such as technical specifications, user manuals, and training materials. OrbitAvanya Tech LLP will work closely with the agency to ensure that these annexures are complete and accurate.</p></div>
+<div class="section allow-split"><h2 class="t">Your Investment</h2>
+<p>Indicative pricing for Software &amp; Web Development engagements. Services most relevant to this proposal are highlighted below.</p>
+<table class="editorial"><thead><tr><th>Service</th><th class="num">Starting Price (USD)</th><th>Delivery Time</th><th>AMC</th></tr></thead><tbody><tr><td>CRM Development</td><td class="num">40000</td><td>8–16 Weeks</td><td>18%/Year</td></tr>
+<tr><td>ERP Development</td><td class="num">120000</td><td>4–8 Months</td><td>20%/Year</td></tr>
+<tr><td>HRMS</td><td class="num">35000</td><td>8–12 Weeks</td><td>18%/Year</td></tr>
+<tr><td>Inventory Management</td><td class="num">30000</td><td>6–10 Weeks</td><td>18%/Year</td></tr>
+<tr><td>Hospital Management System</td><td class="num">150000</td><td>5–9 Months</td><td>20%/Year</td></tr>
+<tr><td>School ERP</td><td class="num">50000</td><td>10–16 Weeks</td><td>18%/Year</td></tr>
+<tr><td>Accounting Software</td><td class="num">45000</td><td>8–14 Weeks</td><td>18%/Year</td></tr>
+<tr><td>Billing Software</td><td class="num">20000</td><td>4–8 Weeks</td><td>15%/Year</td></tr>
+<tr><td>POS System</td><td class="num">25000</td><td>6–10 Weeks</td><td>15%/Year</td></tr>
+<tr><td>Business Website (5–10 Pages)</td><td class="num">8000</td><td>2–4 Weeks</td><td>15%/Year</td></tr>
+<tr><td>Corporate Website</td><td class="num">20000</td><td>4–8 Weeks</td><td>15%/Year</td></tr>
+<tr><td>Government Portal</td><td class="num">80000</td><td>3–6 Months</td><td>20%/Year</td></tr>
+<tr><td>E-commerce Website</td><td class="num">35000</td><td>8–16 Weeks</td><td>18%/Year</td></tr>
+<tr><td>Custom Web Portal</td><td class="num">50000</td><td>10–20 Weeks</td><td>20%/Year</td></tr></tbody></table></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 9</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">10</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section allow-split"><table class="editorial"><thead><tr><th>Service</th><th class="num">Starting Price (USD)</th><th>Delivery Time</th><th>AMC</th></tr></thead><tbody><tr><td>Android App</td><td class="num">20000</td><td>8–12 Weeks</td><td>18%/Year</td></tr>
+<tr><td>iOS App</td><td class="num">25000</td><td>8–14 Weeks</td><td>18%/Year</td></tr>
+<tr><td>Flutter App</td><td class="num">30000</td><td>10–16 Weeks</td><td>18%/Year</td></tr>
+<tr><td>React Native App</td><td class="num">30000</td><td>10–16 Weeks</td><td>18%/Year</td></tr>
+<tr><td>Enterprise Mobile App</td><td class="num">60000</td><td>3–6 Months</td><td>20%/Year</td></tr>
+<tr><td>Document Management System</td><td class="num">120000</td><td>4–7 Months</td><td>18%/Year</td></tr>
+<tr><td>Scanning &amp; Digitization</td><td class="num">$0.10–$1.00</td><td>Volume-Based</td><td>Optional</td></tr>
+<tr><td>OCR &amp; Metadata Indexing</td><td class="num">35000</td><td>6–10 Weeks</td><td>15%/Year</td></tr>
+<tr><td>Digital Archiving</td><td class="num">90000</td><td>3–6 Months</td><td>18%/Year</td></tr>
+<tr><td>UI/UX Design</td><td class="num">12000</td><td>3–6 Weeks</td><td>Optional</td></tr>
+<tr><td>Figma Prototype</td><td class="num">8000</td><td>2–4 Weeks</td><td>Optional</td></tr>
+<tr><td>AVANYA AI LMS</td><td class="num">150000</td><td>4–8 Months</td><td>20%/Year</td></tr>
+<tr><td>AVANYA AI ERP</td><td class="num">250000</td><td>6–12 Months</td><td>20%/Year</td></tr></tbody></table></div>
+<div class="section allow-split"><h3>Premium Enterprise Add-ons</h3>
+<table class="editorial"><thead><tr><th>Add-on</th><th class="num">Starting Price</th></tr></thead><tbody><tr><td>Multi-Tenant SaaS Architecture</td><td class="num">$40,000+</td></tr>
+<tr><td>SCORM/xAPI Integration</td><td class="num">$10,000+</td></tr>
+<tr><td>Video Streaming Platform Integration</td><td class="num">$15,000+</td></tr>
+<tr><td>Mobile Applications (Android &amp; iOS)</td><td class="num">$30,000+</td></tr>
+<tr><td>SAP / Oracle / Microsoft Dynamics Integration</td><td class="num">$40,000+</td></tr>
+<tr><td>Mobile Application (Android &amp; iOS)</td><td class="num">$20,000+</td></tr>
+<tr><td>API &amp; Third-Party Integrations</td><td class="num">$5,000+ per integration</td></tr>
+<tr><td>Data Migration</td><td class="num">$8,000+</td></tr>
+<tr><td>UI/UX Design</td><td class="num">$5,000+</td></tr>
+<tr><td>Progressive Web App (PWA)</td><td class="num">$8,000+</td></tr>
+<tr><td>CMS Integration</td><td class="num">$3,000+</td></tr>
+<tr><td>Payment Gateway Integration</td><td class="num">$2,500+</td></tr>
+<tr><td>API Integration</td><td class="num">$2,000+ per API</td></tr></tbody></table>
+<p class="price-note">Prices shown are starting/indicative rates and may vary based on final scope, integration complexity, and delivery timeline. EUR and INR equivalents, and a detailed line-item quote, are available on request.</p></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 10</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+
+<section class="page">
+  <div class="masthead">
+    <span>Customer: <strong>{{CUSTOMER_COMPANY_NAME}}</strong></span>
+    <span>Proposal: <strong>OrbitAvanya Tech</strong></span>
+  </div>
+  <div class="page-content">
+    <div class="folio">
+      <div class="num">11</div>
+      <div class="brand-v">ORBITAVANYA TECH &middot; AVANYAEDGE</div>
+    </div>
+    <div class="main">
+      <div class="section"><h2 class="t">Closing</h2>
+<p>OrbitAvanya Tech LLP declares that we have the necessary expertise, experience, and resources to deliver the eNotifications service. We are committed to delivering a high-quality solution that meets the agency's requirements and exceeds expectations.</p>
+<p>OrbitAvanya Tech LLP (AvanyaEdge) remains committed to delivering a reliable, secure, scalable, and future-ready solution aligned with <strong class="accent">{{CUSTOMER_COMPANY_NAME}}</strong>'s objectives.</p>
+<p>Attention: <strong>{{CEO_NAME}}</strong> ({{CUSTOMER_EMAIL}})</p></div>
+<div class="section"><div class="signature"><p>Respectfully,</p><div class="name">Pradeep Kumar Singh</div><div>Director</div><div>Microsoft Certified Developer &amp; AI Expert</div><div>OrbitAvanya Tech LLP (AvanyaEdge)</div></div></div>
+    </div>
+  </div>
+  <footer class="page-footer">
+    <span class="left footer-brand">OrbitAvanya Tech</span>
+    <span class="center">Page 11</span>
+    <span class="right">www.orbitavanyatech.com</span>
+  </footer>
+</section>
+
+<script>
+  document.querySelectorAll('[data-cover-style]').forEach(function (el) {
+    var val = el.getAttribute('data-cover-style');
+    if (val) el.setAttribute('style', val);
+  });
+</script>
+
+</body>
+</html>

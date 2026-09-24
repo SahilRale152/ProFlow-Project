@@ -1,0 +1,77 @@
+# ==============================
+# Environment & secrets
+# ==============================
+.env
+.env.*
+!.env.example
+!.env.mysql.example
+
+# ==============================
+# Node.js
+# ==============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+ENV/
+
+# ==============================
+# VS Code / local editor files
+# ==============================
+.vscode/
+.history/
+*.code-workspace
+
+# ==============================
+# Logs
+# ==============================
+*.log
+logs/
+
+# ==============================
+# Generated/local data
+# ==============================
+*.xlsx
+*.xls
+*.csv
+*.sqlite
+*.sqlite3
+
+# Keep project structure folders but ignore generated contents
+backend/data/
+backend/output/
+backend/exports/
+nova-crm-project/data/
+nova-crm-project/uploads/
+
+# ==============================
+# OS files
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Temporary files
+# ==============================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# ==============================
+# Python local configuration
+# ==============================
+.python-version
