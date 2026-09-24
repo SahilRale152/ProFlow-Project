@@ -1,5 +1,6 @@
 const API_BASE =
   (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) ||
+  import.meta.env.VITE_API_URL ||
   "";
 
 const TOKEN_KEY = "nova_auth_token";
