@@ -93,7 +93,7 @@ const KPI_STYLES: Record<string, { bg: string; text: string; icon: typeof Activi
 // port — same fix already applied on the AI LLM page's download button, so
 // this never silently does nothing if the proxy isn't set up.
 async function fetchWithFallback(path: string, init?: RequestInit): Promise<Response> {
-  const candidates = [path, `http://localhost:5000${path}`];
+  const candidates = [path, `${import.meta.env.VITE_API_URL}${path}`];
   let lastErr: any = null;
   for (const url of candidates) {
     try {

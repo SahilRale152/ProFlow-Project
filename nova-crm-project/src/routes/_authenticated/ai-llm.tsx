@@ -212,9 +212,8 @@ function ReportBlock({ content }: { content: string }) {
         elements.push(
           <div
             key={key}
-            className={`my-4 rounded-r-lg border-l-4 bg-muted/30 py-3 pl-4 pr-4 ${
-              priorityBorderClass[priority || ""] || "border-l-slate-300"
-            }`}
+            className={`my-4 rounded-r-lg border-l-4 bg-muted/30 py-3 pl-4 pr-4 ${priorityBorderClass[priority || ""] || "border-l-slate-300"
+              }`}
           >
             <div className="mb-1.5 flex flex-wrap items-center gap-2">
               <span className="text-[15px] font-semibold">{renderInline(text, key)}</span>
@@ -437,7 +436,10 @@ function AiLlmPage() {
     // proxy configured — it'd come back as the frontend's own HTML instead
     // of a spreadsheet), fall back to the backend's direct port. Trying
     // both means this works either way instead of silently doing nothing.
-    const candidates = ["/api/research/export/excel", "http://localhost:5000/api/research/export/excel"];
+    const candidates = [
+      "/api/research/export/excel",
+      `${import.meta.env.VITE_API_URL}/api/research/export/excel`,
+    ];
 
     let lastError: string | null = null;
     for (const url of candidates) {
