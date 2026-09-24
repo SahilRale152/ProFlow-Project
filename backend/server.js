@@ -4854,6 +4854,9 @@ app.post("/api/auth/register", async (req, res) => {
       [email]
     );
     const user = userResult.rows[0];
+    if (!user) {
+      throw new Error("Registration insert completed but the new crm_users row could not be read back.");
+    }
 
     try {
       await sendVerificationEmail({ email: user.email, fullName: user.full_name, token: verificationToken });
@@ -4866,7 +4869,8 @@ app.post("/api/auth/register", async (req, res) => {
       message: "Account created. Check your email and verify your account before signing in.",
     });
   } catch (err) {
-    appendRuntimeLog("ERROR", "Registration failed", { message: err.message });
+    appendRuntimeLog("ERROR", "Registration failed", { message: err.message, stack: err.stack, requestId: req.novaRequestId });
+    console.error(`[AUTH REGISTER] request=${req.novaRequestId || "unknown"} ${err.stack || err.message}`);
     return res.status(err.code === "EMAIL_NOT_CONFIGURED" ? 503 : 500).json({
       message: err.code === "EMAIL_NOT_CONFIGURED"
         ? err.message
@@ -5292,6 +5296,14 @@ if (EMAIL_USER && EMAIL_PASSWORD && SMTP_SERVER) {
     secure: SMTP_PORT === 465, // true for port 465 (implicit TLS), false for e.g. 587 (STARTTLS)
     auth: { user: EMAIL_USER, pass: EMAIL_PASSWORD },
   });
+}
+
+if (mailTransporter) {
+  mailTransporter.verify()
+    .then(() => console.log(`[EMAIL] SMTP verified successfully for ${EMAIL_USER}`))
+    .catch((err) => console.error(`[EMAIL] SMTP verification failed: ${err.message}`));
+} else {
+  console.error("[EMAIL] SMTP NOT CONFIGURED — EMAIL/EMAIL_PASSWORD/SMTP_SERVER missing");
 }
 
 // Send a proposal by email with a tracked link.
