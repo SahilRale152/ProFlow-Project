@@ -11,7 +11,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Plus, Trash2, ExternalLink, Eye, Share2, Search, UploadCloud } from "lucide-react";
 import { toast } from "sonner";
 
-const API = `${import.meta.env.VITE_API_URL}/api`;
+const API = "http://localhost:5000/api";
 
 export const Route = createFileRoute("/_authenticated/documents")({
   head: () => ({
