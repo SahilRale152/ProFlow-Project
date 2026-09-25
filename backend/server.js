@@ -3094,7 +3094,7 @@ async function estimateLeadValueFromEmail(subject, text) {
 async function findCustomerIdByEmail(fromEmail) {
   if (!fromEmail) return null;
   const result = await pool.query(
-    "SELECT id FROM customers WHERE LOWER(email) = LOWER(?) LIMIT 1",
+    "SELECT id FROM customers WHERE LOWER(email) = LOWER($1) LIMIT 1",
     [fromEmail]
   );
   return result.rows[0] ? result.rows[0].id : null;
@@ -4802,7 +4802,7 @@ app.post("/api/auth/register", async (req, res) => {
 
   try {
     const existingResult = await pool.query(
-      "SELECT id, email, full_name, email_verified FROM crm_users WHERE LOWER(email) = LOWER(?) LIMIT 1",
+      "SELECT id, email, full_name, email_verified FROM crm_users WHERE LOWER(email) = LOWER($1) LIMIT 1",
       [email]
     );
     const existing = existingResult.rows[0];
@@ -4959,7 +4959,7 @@ app.post("/api/auth/login", async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT id, email, password_hash, password_salt, full_name, role, email_verified
-       FROM crm_users WHERE LOWER(email) = LOWER(?) LIMIT 1`,
+       FROM crm_users WHERE LOWER(email) = LOWER($1) LIMIT 1`,
       [email]
     );
     const user = result.rows[0];
