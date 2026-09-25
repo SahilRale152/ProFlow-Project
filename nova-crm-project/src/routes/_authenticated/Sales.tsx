@@ -39,7 +39,7 @@ export const Route = createFileRoute("/_authenticated/Sales")({
 const API_BASE =
   (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__ !== undefined
     ? (window as any).__NOVA_API_BASE__
-    : "http://localhost:5000");
+    : import.meta.env.VITE_API_URL);
 
 async function api(path: string, options: RequestInit = {}) {
   const res = await fetch(API_BASE + path, {

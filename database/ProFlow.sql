@@ -3270,4 +3270,12 @@ SELECT cc.id AS contract_id, cc.contract_number, cc.client_company_name, cc.stat
 FROM client_contracts cc
 LEFT JOIN client_onboarding co ON co.contract_id = cc.id
 WHERE cc.contract_number = 'CNT-2026-DEMO-001';
+SHOW DATABASES;
 
+UPDATE crm_users
+SET email_verified = 1
+WHERE email = 'sahilrale15022005@gmail.com';
+
+SELECT email, email_verified
+FROM crm_users
+WHERE email = 'sahilrale15022005@gmail.com';
