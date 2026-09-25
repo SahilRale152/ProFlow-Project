@@ -4823,10 +4823,10 @@ app.post("/api/auth/register", async (req, res) => {
     if (existing) {
       await pool.query(
         `UPDATE crm_users
-         SET verification_token_hash = ?,
+         SET verification_token_hash = $1,
              verification_expires_at = DATE_ADD(NOW(), INTERVAL 30 MINUTE),
              updated_at = NOW()
-         WHERE id = ?`,
+         WHERE id = $2`,
         [verificationHash, existing.id]
       );
       await sendVerificationEmail({
@@ -4844,13 +4844,13 @@ app.post("/api/auth/register", async (req, res) => {
       `INSERT INTO crm_users
         (email, password_hash, password_salt, full_name, role, email_verified,
          verification_token_hash, verification_expires_at)
-       VALUES (?,?,?,?, 'user',0,?,DATE_ADD(NOW(), INTERVAL 30 MINUTE))`,
+       VALUES ($1,$2,$3,$4, 'user',0,$5,DATE_ADD(NOW(), INTERVAL 30 MINUTE))`,
       [email, hash, salt, fullName || null, verificationHash]
     );
 
     const userResult = await pool.query(
       `SELECT id, email, full_name, role, email_verified
-       FROM crm_users WHERE LOWER(email)=LOWER(?) LIMIT 1`,
+       FROM crm_users WHERE LOWER(email)=LOWER($1) LIMIT 1`,
       [email]
     );
     const user = userResult.rows[0];
@@ -4861,7 +4861,7 @@ app.post("/api/auth/register", async (req, res) => {
     try {
       await sendVerificationEmail({ email: user.email, fullName: user.full_name, token: verificationToken });
     } catch (mailErr) {
-      await pool.query("DELETE FROM crm_users WHERE id = ?", [user.id]);
+      await pool.query("DELETE FROM crm_users WHERE id = $1", [user.id]);
       throw mailErr;
     }
 
@@ -4898,7 +4898,7 @@ app.get("/api/auth/verify-email", async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT id FROM crm_users
-       WHERE verification_token_hash = ?
+       WHERE verification_token_hash = $1
          AND verification_expires_at > NOW()
        LIMIT 1`,
       [hashAuthToken(token)]
@@ -4922,7 +4922,7 @@ app.get("/api/auth/verify-email", async (req, res) => {
            verification_token_hash = NULL,
            verification_expires_at = NULL,
            updated_at = NOW()
-       WHERE id = ?`,
+       WHERE id = $1`,
       [user.id]
     );
 
@@ -4979,7 +4979,7 @@ app.post("/api/auth/login", async (req, res) => {
     const token = createAuthToken(user);
     await pool.query(
       `INSERT INTO admin_login_activity (email, name, role, event_type, ip_address, user_agent)
-       VALUES (?,?,?,'login',?,?)`,
+       VALUES ($1,$2,$3,'login',$4,$5)`,
       [
         user.email,
         user.full_name || null,
@@ -5016,7 +5016,7 @@ app.post("/api/auth/resend-verification", async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT id, email, full_name, email_verified FROM crm_users WHERE LOWER(email)=LOWER(?) LIMIT 1",
+      "SELECT id, email, full_name, email_verified FROM crm_users WHERE LOWER(email)=LOWER($1) LIMIT 1",
       [email]
     );
     const user = result.rows[0];
@@ -5031,8 +5031,8 @@ app.post("/api/auth/resend-verification", async (req, res) => {
     const token = crypto.randomBytes(32).toString("hex");
     await pool.query(
       `UPDATE crm_users
-       SET verification_token_hash=?, verification_expires_at=DATE_ADD(NOW(), INTERVAL 30 MINUTE), updated_at=NOW()
-       WHERE id=?`,
+       SET verification_token_hash=$1, verification_expires_at=DATE_ADD(NOW(), INTERVAL 30 MINUTE), updated_at=NOW()
+       WHERE id=$2`,
       [hashAuthToken(token), user.id]
     );
 
@@ -5071,8 +5071,8 @@ app.post("/api/auth/forgot-password", async (req, res) => {
     const token = crypto.randomBytes(32).toString("hex");
     await pool.query(
       `UPDATE crm_users
-       SET reset_token_hash=?, reset_expires_at=DATE_ADD(NOW(), INTERVAL 30 MINUTE), updated_at=NOW()
-       WHERE id=?`,
+       SET reset_token_hash=$1, reset_expires_at=DATE_ADD(NOW(), INTERVAL 30 MINUTE), updated_at=NOW()
+       WHERE id=$2`,
       [hashAuthToken(token), user.id]
     );
 
@@ -5102,7 +5102,7 @@ app.post("/api/auth/reset-password", async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT id FROM crm_users
-       WHERE reset_token_hash=? AND reset_expires_at > NOW()
+       WHERE reset_token_hash=$1 AND reset_expires_at > NOW()
        LIMIT 1`,
       [hashAuthToken(token)]
     );
@@ -5112,9 +5112,9 @@ app.post("/api/auth/reset-password", async (req, res) => {
     const { hash, salt } = hashPassword(password);
     await pool.query(
       `UPDATE crm_users
-       SET password_hash=?, password_salt=?,
+       SET password_hash=$1, password_salt=$2,
            reset_token_hash=NULL, reset_expires_at=NULL, updated_at=NOW()
-       WHERE id=?`,
+       WHERE id=$3`,
       [hash, salt, user.id]
     );
     res.json({ message: "Password updated. You can now sign in." });
@@ -5129,7 +5129,7 @@ app.post("/api/admin/session", async (req, res) => {
   try {
     await pool.query(
       `INSERT INTO admin_login_activity (email, name, role, event_type, ip_address, user_agent)
-       VALUES (?,?,?,'session_seen',?,?)`,
+       VALUES ($1,$2,$3,'session_seen',$4,$5)`,
       [
         String(email).trim().toLowerCase(),
         name || null,
