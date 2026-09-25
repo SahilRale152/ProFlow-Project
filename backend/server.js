@@ -5295,6 +5295,12 @@ if (EMAIL_USER && EMAIL_PASSWORD && SMTP_SERVER) {
     port: SMTP_PORT,
     secure: SMTP_PORT === 465, // true for port 465 (implicit TLS), false for e.g. 587 (STARTTLS)
     auth: { user: EMAIL_USER, pass: EMAIL_PASSWORD },
+    // Without these, a slow/unreachable SMTP host (common on Render's
+    // network for some providers/ports) makes sendMail() hang on the OS-level
+    // TCP timeout, which can be several minutes. Fail fast instead.
+    connectionTimeout: 15000, // time to establish the TCP connection
+    greetingTimeout: 15000,   // time to wait for the SMTP greeting after connecting
+    socketTimeout: 20000,     // time to wait for any response once connected
   });
 }
 
