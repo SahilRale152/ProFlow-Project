@@ -55,6 +55,22 @@ backend/exports/
 nova-crm-project/data/
 nova-crm-project/uploads/
 
+# --- Exceptions -----------------------------------------------------
+# These specific workbooks are hand-maintained master data the running
+# app reads at startup/request time (trackingserver.js, emailtrackingserver.js).
+# They are NOT generated output, so they must ship with every deploy.
+# A directory-level ignore (nova-crm-project/data/ above) stops git from
+# even checking per-file exceptions inside it — so we have to un-ignore
+# the directory first, re-ignore everything else in it, then allow just
+# these two files back in.
+!nova-crm-project/data/
+nova-crm-project/data/*
+!nova-crm-project/data/UK_SUBCONTRACTOR_PROSPECT_MASTER_FINAL.xlsx
+!nova-crm-project/data/SUBCONTRACTOR_PROSPECT_MASTER.xlsx
+
+!AI_EmailAutomation2026/EmailAutomation2026 (2)/EmailAutomation2026/EmailAutomation/Data/Email_Tracking_NEW.xlsx
+
+
 # ==============================
 # OS files
 # ==============================
