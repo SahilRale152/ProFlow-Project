@@ -185,6 +185,16 @@ function createPoolFromEnv() {
     queueLimit: 0,
     connectTimeout: Number(process.env.DB_CONNECTION_TIMEOUT_MS || 10000),
     dateStrings: false,
+    // Keep pooled connections alive over the public internet link to Aiven —
+    // without this, an idle connection can be silently dropped by a NAT/
+    // firewall in between, and the next query on it (or a fresh connect())
+    // times out instead of failing fast/reconnecting cleanly.
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 10000,
+  });
+
+  pool.on('error', (err) => {
+    console.error('[MySQL pool error]', err.code || err.message);
   });
 
   const originalQuery = pool.query.bind(pool);
