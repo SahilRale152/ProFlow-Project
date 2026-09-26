@@ -173,10 +173,12 @@ async function api(path: string, options: RequestInit = {}) {
   const headers = new Headers(options.headers || {});
   headers.set("Content-Type", "application/json");
   if (token) headers.set("Authorization", `Bearer ${token}`);
-  const response = await fetch(path, { ...options, headers });
+  const response = await fetch(path, { ...options, headers, cache: "no-store" });
   const isJson = response.headers.get("content-type")?.includes("application/json");
   const body = isJson ? await response.json().catch(() => ({})) : null;
-  if (!response.ok) throw new Error(body?.message || body?.error || `Request failed (${response.status})`);
+  if (!response.ok && response.status !== 304) {
+    throw new Error(body?.message || body?.error || `Request failed (${response.status})`);
+  }
   return body;
 }
 

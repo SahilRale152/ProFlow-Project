@@ -4788,6 +4788,13 @@ async function sendVerificationEmail({ email, fullName, token }) {
   });
 }
 
+// Auth endpoints must never be cached or conditionally requested (no ETag/304),
+// since a bare 304 has no JSON body and breaks clients expecting { user } every time.
+app.use("/api/auth", (req, res, next) => {
+  res.setHeader("Cache-Control", "no-store");
+  next();
+});
+
 app.post("/api/auth/register", async (req, res) => {
   const email = String(req.body?.email || "").trim().toLowerCase();
   const password = String(req.body?.password || "");
