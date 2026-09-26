@@ -16,7 +16,11 @@ import { Plus, Search, Trash2, Eye, Upload, ArrowLeft, Building2, Mail, Phone, G
 import { Users, UserCheck, XCircle } from "lucide-react";
 import { getAuthToken } from "@/lib/auth";
 
-const API = `${import.meta.env.VITE_API_URL}/api/customers`;
+const API_BASE =
+  (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) ||
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000";
+const API = `${API_BASE}/api/customers`;
 
 /* Attaches the signed-in user's token to a fetch() call. The backend requires
    this on every /api/* route except /api/auth/*. */
