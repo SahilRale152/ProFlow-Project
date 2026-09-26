@@ -1,5 +1,4 @@
-const API_BASE =
-  (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) || "";
+import { API_BASE } from "./api-base";
 
 let installed = false;
 

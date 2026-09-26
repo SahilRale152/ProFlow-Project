@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { API_BASE } from "@/lib/api-base";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 import { PageHeader, EmptyState, StatCard } from "@/components/PageBits";
@@ -45,7 +46,7 @@ function Notifications() {
   // Turn due/overdue follow-ups into notifications through the PostgreSQL API.
   const syncFollowups = useMutation({
     mutationFn: async () => {
-      const response = await fetch("/api/communications/sync-reminders", { method: "POST" });
+      const response = await fetch(`${API_BASE}/api/communications/sync-reminders`, { method: "POST" });
       if (!response.ok) throw new Error("Failed to sync reminders.");
       return (await response.json()).count as number;
     },
@@ -63,7 +64,7 @@ function Notifications() {
   const { data: items = [], isLoading } = useQuery({
     queryKey: ["notifications"],
     queryFn: async () => {
-      const response = await fetch("/api/notifications");
+      const response = await fetch(`${API_BASE}/api/notifications`);
       if (!response.ok) throw new Error("Failed to load notifications.");
       return (await response.json()) ?? [];
     },
@@ -73,7 +74,7 @@ function Notifications() {
   const { data: summary } = useQuery({
     queryKey: ["notifications-summary"],
     queryFn: async () => {
-      const response = await fetch("/api/notifications/summary");
+      const response = await fetch(`${API_BASE}/api/notifications/summary`);
       if (!response.ok) throw new Error("Failed to load notification summary.");
       return (await response.json()) as NotificationSummary;
     },
@@ -82,7 +83,7 @@ function Notifications() {
 
   const markRead = useMutation({
     mutationFn: async (id: string) => {
-      const response = await fetch(`/api/notifications/${id}/read`, { method: "PUT" });
+      const response = await fetch(`${API_BASE}/api/notifications/${id}/read`, { method: "PUT" });
       if (!response.ok) throw new Error("Failed to mark notification as read.");
     },
     onSuccess: () => {
@@ -93,7 +94,7 @@ function Notifications() {
 
   const markAllRead = useMutation({
     mutationFn: async () => {
-      const response = await fetch("/api/notifications/read-all", { method: "PUT" });
+      const response = await fetch(`${API_BASE}/api/notifications/read-all`, { method: "PUT" });
       if (!response.ok) throw new Error("Failed to mark notifications as read.");
       return (await response.json()).count as number;
     },
@@ -106,7 +107,7 @@ function Notifications() {
 
   const remove = useMutation({
     mutationFn: async (id: string) => {
-      const response = await fetch(`/api/notifications/${id}`, { method: "DELETE" });
+      const response = await fetch(`${API_BASE}/api/notifications/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Failed to delete notification.");
     },
     onSuccess: () => {

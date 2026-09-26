@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 import { getAuthToken } from "@/lib/auth";
+import { API_BASE } from "@/lib/api-base";
 
 export const Route = createFileRoute("/_authenticated/analytics")({
   head: () => ({
@@ -93,11 +94,7 @@ const KPI_STYLES: Record<string, { bg: string; text: string; icon: typeof Activi
 // port — same fix already applied on the AI LLM page's download button, so
 // this never silently does nothing if the proxy isn't set up.
 async function fetchWithFallback(path: string, init?: RequestInit): Promise<Response> {
-  const API_BASE =
-  (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) ||
-  import.meta.env.VITE_API_URL ||
-  "http://localhost:5000";
-const candidates = [`${API_BASE}${path}`, path];
+  const candidates = [`${API_BASE}${path}`, path];
   let lastErr: any = null;
   for (const url of candidates) {
     try {

@@ -7,6 +7,7 @@ import {
 import { toast } from "sonner";
 
 import { api, getAuthToken } from "@/lib/auth";
+import { API_BASE } from "@/lib/api-base";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -334,7 +335,7 @@ function SamDataPage({ kind, title, description }: { kind: ModuleKind; title: st
   const scanning=scanAll.isPending||activeRunIds.length>0;
   function refreshData(){ qc.invalidateQueries({queryKey:[basePath,"list"]}); qc.invalidateQueries({queryKey:[basePath,"stats"]}); }
   async function downloadExcel(){
-    setExporting(true); try { const token=getAuthToken(); const res=await fetch(`${basePath}/export?profile_key=${encodeURIComponent(profileKey)}`,{headers:token?{Authorization:`Bearer ${token}`}:{}}); if(!res.ok){const b=await res.json().catch(()=>({}));throw new Error(b.message||`Export failed (${res.status})`)} const blob=await res.blob(); const u=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=u; a.download="SAM_DATA_MASTER.xlsx"; document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u); toast.success("Master Excel downloaded successfully."); } catch(e:any){toast.error(e.message||"Export failed")} finally{setExporting(false)}
+    setExporting(true); try { const token=getAuthToken(); const res=await fetch(`${API_BASE}${basePath}/export?profile_key=${encodeURIComponent(profileKey)}`,{headers:token?{Authorization:`Bearer ${token}`}:{}}); if(!res.ok){const b=await res.json().catch(()=>({}));throw new Error(b.message||`Export failed (${res.status})`)} const blob=await res.blob(); const u=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=u; a.download="SAM_DATA_MASTER.xlsx"; document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u); toast.success("Master Excel downloaded successfully."); } catch(e:any){toast.error(e.message||"Export failed")} finally{setExporting(false)}
   }
   const selectedRow=detailId===null?null:rows.find(r=>r.id===detailId)||null;
   const icon=kind==="software"?<Code2 className="h-5 w-5"/>:<ScanLine className="h-5 w-5"/>;

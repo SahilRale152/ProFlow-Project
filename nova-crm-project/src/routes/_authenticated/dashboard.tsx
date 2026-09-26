@@ -22,12 +22,18 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
 });
 
 /* ------------------------------------------------------------------ */
-/* Fetch helper — relative paths only, matches the rest of the app's  */
-/* dev-proxy / same-origin convention (see proposals.tsx's api()).    */
+/* Fetch helper — same API_BASE convention used by customers.tsx,     */
+/* documents.tsx, auth.ts, etc. Falls back to same-origin locally,    */
+/* but resolves to the deployed backend when VITE_API_URL is set.     */
 /* ------------------------------------------------------------------ */
+const API_BASE =
+  (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) ||
+  import.meta.env.VITE_API_URL ||
+  "";
+
 async function fetchJson(path: string) {
   const token = getAuthToken();
-  const res = await fetch(path, {
+  const res = await fetch(`${API_BASE}${path}`, {
     headers: token ? { Authorization: `Bearer ${token}` } : undefined,
   });
   if (!res.ok) {

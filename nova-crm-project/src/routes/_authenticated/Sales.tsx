@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Plus, Sparkles, Trash2, ArrowRightCircle, CalendarClock, ListChecks, ShieldCheck, UserCheck, Mail } from "lucide-react";
+import { API_BASE } from "@/lib/api-base";
 import { money } from "@/lib/currency";
 
 export const Route = createFileRoute("/_authenticated/Sales")({
@@ -36,10 +37,6 @@ export const Route = createFileRoute("/_authenticated/Sales")({
    mounts (e.g. in production behind a reverse proxy that forwards
    /api to the backend, you can set this to "").
 ============================================================ */
-const API_BASE =
-  (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__ !== undefined
-    ? (window as any).__NOVA_API_BASE__
-    : import.meta.env.VITE_API_URL || "http://localhost:5000");
 
 async function api(path: string, options: RequestInit = {}) {
   const res = await fetch(API_BASE + path, {

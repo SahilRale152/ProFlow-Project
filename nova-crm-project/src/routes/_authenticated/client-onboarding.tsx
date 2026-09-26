@@ -168,17 +168,20 @@ function getAuthToken() {
   return null;
 }
 
+const API_BASE =
+  (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) ||
+  import.meta.env.VITE_API_URL ||
+  "";
+
 async function api(path: string, options: RequestInit = {}) {
   const token = getAuthToken();
   const headers = new Headers(options.headers || {});
   headers.set("Content-Type", "application/json");
   if (token) headers.set("Authorization", `Bearer ${token}`);
-  const response = await fetch(path, { ...options, headers, cache: "no-store" });
+  const response = await fetch(`${API_BASE}${path}`, { ...options, headers });
   const isJson = response.headers.get("content-type")?.includes("application/json");
   const body = isJson ? await response.json().catch(() => ({})) : null;
-  if (!response.ok && response.status !== 304) {
-    throw new Error(body?.message || body?.error || `Request failed (${response.status})`);
-  }
+  if (!response.ok) throw new Error(body?.message || body?.error || `Request failed (${response.status})`);
   return body;
 }
 

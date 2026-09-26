@@ -14,6 +14,7 @@ import { Plus, Phone, Mail, Calendar, MessageSquare, StickyNote, Search, CheckCi
 import { toast } from "sonner";
 import { takePendingProposalEmail } from "@/lib/pendingProposalEmail";
 import { api } from "@/lib/auth";
+import { API_BASE } from "@/lib/api-base";
 import { EmailTemplateEditor } from "@/components/EmailTemplateEditor";
 
 export const Route = createFileRoute("/_authenticated/communications")({
@@ -258,7 +259,7 @@ function Communications() {
 
   const syncReminders = useMutation({
     mutationFn: async () => {
-      const response = await fetch("/api/communications/sync-reminders", { method: "POST" });
+      const response = await fetch(`${API_BASE}/api/communications/sync-reminders`, { method: "POST" });
       if (!response.ok) throw new Error("Failed to sync reminders.");
       return (await response.json()).count as number;
     },
@@ -289,7 +290,7 @@ function Communications() {
   const { data: acts = [] } = useQuery({
     queryKey: ["communications"],
     queryFn: async () => {
-      const response = await fetch("/api/communications");
+      const response = await fetch(`${API_BASE}/api/communications`);
       if (!response.ok) throw new Error("Failed to load communications.");
       return (await response.json()) ?? [];
     },
@@ -302,7 +303,7 @@ function Communications() {
   const { data: customers = [] } = useQuery({
     queryKey: ["customers-mini"],
     queryFn: async () => {
-      const response = await fetch("/api/customers");
+      const response = await fetch(`${API_BASE}/api/customers`);
       if (!response.ok) throw new Error("Failed to load customers.");
       return (await response.json()) ?? [];
     },
@@ -326,7 +327,7 @@ function Communications() {
   const { data: proposals = [] } = useQuery({
     queryKey: ["proposal-files-for-email"],
     queryFn: async () => {
-      const response = await fetch("/api/proposals");
+      const response = await fetch(`${API_BASE}/api/proposals`);
       if (!response.ok) throw new Error("Failed to load proposal files.");
       return (await response.json()) ?? [];
     },
@@ -408,7 +409,7 @@ function Communications() {
   const { data: summary } = useQuery({
     queryKey: ["communications-summary"],
     queryFn: async () => {
-      const response = await fetch("/api/communications/summary");
+      const response = await fetch(`${API_BASE}/api/communications/summary`);
       if (!response.ok) throw new Error("Failed to load communications summary.");
       return (await response.json()) as CommsSummary;
     },
@@ -426,7 +427,7 @@ function Communications() {
         duration_minutes: form.duration_minutes ? Number(form.duration_minutes) : null,
         ...(form.status !== "scheduled" ? { notified: false } : {}),
       };
-      const response = await fetch(editing ? `/api/activities/${editing.id}` : "/api/activities", {
+      const response = await fetch(editing ? `${API_BASE}/api/activities/${editing.id}` : `${API_BASE}/api/activities`, {
         method: editing ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -465,7 +466,7 @@ function Communications() {
 
   const complete = useMutation({
     mutationFn: async (id: string) => {
-      const response = await fetch(`/api/activities/${id}/complete`, { method: "PUT" });
+      const response = await fetch(`${API_BASE}/api/activities/${id}/complete`, { method: "PUT" });
       if (!response.ok) throw new Error("Failed to complete activity.");
     },
     onSuccess: () => {
@@ -725,7 +726,7 @@ function Communications() {
         payload.append("proposal_ids", JSON.stringify(sendForm.proposal_ids.map(Number)));
         if (file) payload.append("attachment", file);
 
-        const response = await fetch("/api/communications/send", {
+        const response = await fetch(`${API_BASE}/api/communications/send`, {
           method: "POST",
           body: payload,
         });

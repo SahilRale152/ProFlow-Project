@@ -12,6 +12,7 @@ import {
 import { toast } from "sonner";
 
 import { api, getAuthToken } from "@/lib/auth";
+import { API_BASE } from "@/lib/api-base";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -436,10 +437,6 @@ function AiLlmPage() {
     // proxy configured — it'd come back as the frontend's own HTML instead
     // of a spreadsheet), fall back to the backend's direct port. Trying
     // both means this works either way instead of silently doing nothing.
-    const API_BASE =
-      (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) ||
-      import.meta.env.VITE_API_URL ||
-      "http://localhost:5000";
     const candidates = [`${API_BASE}/api/research/export/excel`, "/api/research/export/excel"];
 
     let lastError: string | null = null;

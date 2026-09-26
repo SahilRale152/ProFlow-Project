@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { API_BASE } from '@/lib/api-base'
 import {
   useEffect,
   useMemo,
@@ -273,7 +274,7 @@ type StoredProposal = {
 
 async function api<T>(url: string, options?: RequestInit): Promise<T> {
   const token = getAuthToken()
-  const res = await fetch(url, {
+  const res = await fetch(`${API_BASE}${url}`, {
     headers: {
       'Content-Type': 'application/json',
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -291,7 +292,7 @@ async function api<T>(url: string, options?: RequestInit): Promise<T> {
 // Renders merged proposal HTML to PDF bytes through the server's
 // Puppeteer endpoint (same renderer for preview, download and storage).
 async function renderPdf(html: string, filename: string): Promise<Blob> {
-  const res = await fetch('/api/proposals/export-pdf', {
+  const res = await fetch(`${API_BASE}/api/proposals/export-pdf`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ html, filename }),
@@ -850,7 +851,7 @@ function GenerateTab({ onOpenStorage }: { onOpenStorage: () => void }) {
     try {
       const form = new FormData()
       form.append('image', file)
-      const res = await fetch('/api/proposals/cover-image', { method: 'POST', body: form })
+      const res = await fetch(`${API_BASE}/api/proposals/cover-image`, { method: 'POST', body: form })
       if (!res.ok) {
         const body = await res.json().catch(() => ({}))
         throw new Error(body.message || 'Image upload failed.')

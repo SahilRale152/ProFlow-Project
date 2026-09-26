@@ -1,7 +1,4 @@
-const API_BASE =
-  (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) ||
-  import.meta.env.VITE_API_URL ||
-  "http://localhost:5000";
+import { API_BASE } from "./api-base";
 
 const TOKEN_KEY = "nova_auth_token";
 
@@ -25,14 +22,10 @@ export async function api(path: string, options: RequestInit = {}) {
   const token = getAuthToken();
   if (token) headers.set("Authorization", `Bearer ${token}`);
 
-  const response = await fetch(`${API_BASE}${path}`, {
-    ...options,
-    headers,
-    cache: "no-store",
-  });
+  const response = await fetch(`${API_BASE}${path}`, { ...options, headers });
   const body = await response.json().catch(() => ({}));
 
-  if (!response.ok && response.status !== 304) {
+  if (!response.ok) {
     if (response.status === 401 && typeof window !== "undefined") {
       clearAuthToken();
     }

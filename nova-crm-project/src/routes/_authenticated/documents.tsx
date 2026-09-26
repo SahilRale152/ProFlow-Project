@@ -11,10 +11,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Plus, Trash2, ExternalLink, Eye, Share2, Search, UploadCloud } from "lucide-react";
 import { toast } from "sonner";
 
-const API_BASE =
-  (typeof window !== "undefined" && (window as any).__NOVA_API_BASE__) ||
-  import.meta.env.VITE_API_URL ||
-  "http://localhost:5000";
+import { API_BASE } from "@/lib/api-base";
 const API = `${API_BASE}/api`;
 
 export const Route = createFileRoute("/_authenticated/documents")({
