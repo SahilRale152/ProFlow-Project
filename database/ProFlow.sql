@@ -1,5 +1,5 @@
 -- ============================================================
--- GMFDMMZN_PROFLOW (OrbitAvanya CRM) — COMBINED MASTER SCRIPT
+-- gmfdmmzn_proflow (OrbitAvanya CRM) — COMBINED MASTER SCRIPT
 -- Auto-combined on 2026-09-23. Run this single file top-to-bottom
 -- in MySQL Workbench 8.0 CE (or `mysql < combined_gmfdmmzn_proflow.sql`).
 --
@@ -10,10 +10,10 @@
 --   4. tender_customers_MYSQL_FIXED_v5.sql
 --   5. scanning_MYSQL_FULLY_FIXED.sql
 --   6. demo_MYSQL_FULLY_FIXED.sql
-DROP DATABASE IF EXISTS `gmfdmmzn_proflow`;
--- Nothing has been removed, reworded, or reordered within each
--- source file — each section below is that file's content verbatim,
--- one after another, exactly in the sequence above.
+-- Nothing has been reworded or reordered within each source file.
+-- Duplicate statements were removed on 2026-09-29: repeated CREATE DATABASE /
+-- USE / SET SQL_SAFE_UPDATES lines (now done once, right below), repeated
+-- CREATE TABLE and INSERT ... VALUES blocks, and identical duplicate indexes.
 -- ============================================================
 
 -- This script is meant to be run start-to-finish against a fresh
@@ -26,9 +26,9 @@ DROP DATABASE IF EXISTS `gmfdmmzn_proflow`;
 -- this script duplicates it.
 
 
-SET SQL_SAFE_UPDATES = 0;
 CREATE DATABASE IF NOT EXISTS `gmfdmmzn_proflow`;
 USE `gmfdmmzn_proflow`;
+SET SQL_SAFE_UPDATES = 0;
 
 
 -- ============================================================
@@ -46,12 +46,9 @@ USE `gmfdmmzn_proflow`;
 -- below first (see the same note in gmfdmmzn_proflow_schema.sql).
 -- DROP DATABASE IF EXISTS gmfdmmzn_proflow;
 
-CREATE DATABASE IF NOT EXISTS gmfdmmzn_proflow;
-USE gmfdmmzn_proflow;
-
 -- See the matching note in gmfdmmzn_proflow_schema.sql — this avoids
 -- Error 1175 on the DELETE further down, scoped to this session only.
-SET SQL_SAFE_UPDATES = 0;
+-- (SET SQL_SAFE_UPDATES = 0 is already done once at the top of this file.)
 
 CREATE TABLE IF NOT EXISTS crm_users (
   id CHAR(36) NOT NULL DEFAULT (UUID()) PRIMARY KEY,
@@ -104,7 +101,7 @@ ORDER BY created_at DESC;
 UPDATE crm_users
 SET role = 'admin',
     updated_at = CURRENT_TIMESTAMP
-WHERE email = 'sahilrale15022005@gmail.com';
+WHERE email = 'gmfdmmzn_proflowrale15022005@gmail.com';
 
 
 -- NOTE: commented out — client_contracts isn't created by this file or by
@@ -133,7 +130,7 @@ WHERE email = 'sahilrale15022005@gmail.com';
 -- ============================================================
 
 -- ============================================================
--- GMFDMMZN_PROFLOW (OrbitAvanya CRM) — CONSOLIDATED SCHEMA
+-- gmfdmmzn_proflow (OrbitAvanya CRM) — CONSOLIDATED SCHEMA
 -- Converted from PostgreSQL (orbit.sql) to MySQL for
 -- MySQL Workbench 8.0 CE. Tables, columns, defaults, indexes
 -- and seed data are kept as close to the original as MySQL
@@ -152,16 +149,13 @@ WHERE email = 'sahilrale15022005@gmail.com';
 -- "duplicate key/column" errors otherwise.
 -- DROP DATABASE IF EXISTS gmfdmmzn_proflow;
 
-CREATE DATABASE IF NOT EXISTS gmfdmmzn_proflow;
-USE gmfdmmzn_proflow;
-
 -- MySQL Workbench's "safe update mode" blocks DELETE/UPDATE statements
 -- whose WHERE clause doesn't filter directly on a key column of the
 -- table being modified (the de-dupe DELETE further down, and similar
 -- statements in gmfdmmzn_proflow_auth.sql, filter through a join/
 -- function instead). Disabling it here — scoped to this session/script
 -- only — avoids Error 1175 without changing your global Workbench setting.
-SET SQL_SAFE_UPDATES = 0;
+-- (SET SQL_SAFE_UPDATES = 0 is already done once at the top of this file.)
 
 -- ============================================================
 -- Customers (base table)
@@ -440,7 +434,6 @@ ALTER TABLE communications ADD INDEX idx_communications_direction (direction);
 ALTER TABLE communications ADD INDEX idx_communications_received_at (received_at DESC);
 ALTER TABLE communications ADD INDEX idx_communications_created_at (created_at DESC);
 ALTER TABLE communications ADD INDEX idx_communications_sender_email (sender_email);
-ALTER TABLE communications ADD INDEX idx_communications_message_id (message_id(191));
 ALTER TABLE communications ADD INDEX idx_communications_is_read (is_read);
 
 -- De-dupe by message_id before the unique index (safe no-op on a clean table)
@@ -594,33 +587,7 @@ CREATE TABLE IF NOT EXISTS pricing_catalog (
   delivery_time TEXT,
   amc TEXT
 );
-INSERT INTO pricing_catalog (service_name, starting_price, delivery_time, amc)
-SELECT * FROM (
-  SELECT 'CRM Development' service_name,'40000' starting_price,'8–16 Weeks' delivery_time,'18%/Year' amc UNION ALL
-  SELECT 'ERP Development','120000','4–8 Months','20%/Year' UNION ALL
-  SELECT 'HRMS','35000','8–12 Weeks','18%/Year' UNION ALL
-  SELECT 'Inventory Management','30000','6–10 Weeks','18%/Year' UNION ALL
-  SELECT 'Hospital Management System','150000','5–9 Months','20%/Year' UNION ALL
-  SELECT 'School ERP','50000','10–16 Weeks','18%/Year' UNION ALL
-  SELECT 'Accounting Software','45000','8–14 Weeks','18%/Year' UNION ALL
-  SELECT 'Billing Software','20000','4–8 Weeks','15%/Year' UNION ALL
-  SELECT 'POS System','25000','6–10 Weeks','15%/Year' UNION ALL
-  SELECT 'Business Website (5–10 Pages)','8000','2–4 Weeks','15%/Year' UNION ALL
-  SELECT 'Corporate Website','20000','4–8 Weeks','15%/Year' UNION ALL
-  SELECT 'Government Portal','80000','3–6 Months','20%/Year' UNION ALL
-  SELECT 'E-commerce Website','35000','8–16 Weeks','18%/Year' UNION ALL
-  SELECT 'Custom Web Portal','50000','10–20 Weeks','20%/Year' UNION ALL
-  SELECT 'Android App','20000','8–12 Weeks','18%/Year' UNION ALL
-  SELECT 'iOS App','25000','8–14 Weeks','18%/Year' UNION ALL
-  SELECT 'Enterprise Mobile App','60000','3–6 Months','20%/Year' UNION ALL
-  SELECT 'Document Management System','120000','4–7 Months','18%/Year' UNION ALL
-  SELECT 'UI/UX Design','12000','3–6 Weeks','Optional' UNION ALL
-  SELECT 'AVANYA AI LMS','150000','4–8 Months','20%/Year' UNION ALL
-  SELECT 'AVANYA AI ERP','250000','6–12 Months','20%/Year'
-) AS demo
-WHERE NOT EXISTS (SELECT 1 FROM pricing_catalog);
--- NOTE: Postgres' "VALUES (...) AS demo(cols)" table constructor was
--- rewritten as a UNION ALL of SELECTs — same rows, MySQL-compatible.
+-- (Default pricing rows are inserted once, in SECTION 4 below, with currency/category.)
 
 -- ============================================================
 -- Proposal folders (+ default rows)
@@ -1101,25 +1068,7 @@ ALTER TABLE leads
 ALTER TABLE opportunities
   ADD COLUMN value_source TEXT NOT NULL DEFAULT ('manual');
 
--- admin_login_activity (table + its indexes) is created by
--- gmfdmmzn_proflow_auth.sql. CREATE TABLE IF NOT EXISTS below is a safe
--- no-op if that ran first — but its indexes are NOT re-added here, since
--- MySQL has no ADD INDEX IF NOT EXISTS and auth.sql already creates them
--- under the same names. Run gmfdmmzn_proflow_auth.sql at some point
--- (before or after this file) so this table ends up indexed; if you ever
--- run this file completely on its own, add those two indexes manually:
---   ALTER TABLE admin_login_activity ADD INDEX idx_admin_login_activity_created (created_at DESC);
---   ALTER TABLE admin_login_activity ADD INDEX idx_admin_login_activity_email (email(191));
-CREATE TABLE IF NOT EXISTS admin_login_activity (
-  id BIGINT AUTO_INCREMENT PRIMARY KEY,
-  email TEXT NOT NULL,
-  name TEXT,
-  role TEXT,
-  event_type TEXT NOT NULL DEFAULT ('session_seen'),
-  ip_address TEXT,
-  user_agent TEXT,
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
+-- admin_login_activity (table + its indexes) is already created in SECTION 1 (auth) above.
 
 -- ============================================================
 -- NOVA CRM — PROJECTS MODULE (post-sale client project tracking)
@@ -1296,9 +1245,6 @@ ALTER TABLE project_payments ADD INDEX idx_project_payments_status (payment_stat
 -- SECTION: 3. CLIENT CONTRACT ONBOARDING
 -- Source file: client_contract_onboarding_MYSQL_FULLY_FIXED.sql
 -- ============================================================
-
-CREATE DATABASE IF NOT EXISTS `gmfdmmzn_proflow`;
-USE `gmfdmmzn_proflow`;
 
 -- ============================================================
 -- NOVA CRM — MySQL 8.0 conversion of client_contract_onboarding.sql
@@ -1845,9 +1791,6 @@ ORDER BY u.email, cc.id;
 -- logic are preserved; PostgreSQL-only syntax is converted to MySQL.
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS gmfdmmzn_proflow;
-USE gmfdmmzn_proflow;
-
 -- ============================================================
 -- MySQL compatibility helpers
 -- These helpers make the migration safe for the partially-created
@@ -2085,32 +2028,10 @@ CALL sp_create_index_if_missing(
     'CREATE INDEX idx_company_research_lookup ON company_research(source, company_id, created_at DESC)'
 );
 
-CREATE TABLE IF NOT EXISTS company_profile (
-    id INTEGER PRIMARY KEY DEFAULT 1,
-    company_name TEXT,
-    legal_name TEXT,
-    tagline TEXT,
-    description TEXT,
-    registered_office TEXT,
-    website TEXT,
-    portfolio_url TEXT,
-    email TEXT,
-    phone TEXT,
-    leadership_name TEXT,
-    leadership_title TEXT,
-    core_services JSON,
-    why_choose_us JSON,
-    certifications JSON,
-    registrations JSON,
-    updated_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
-);
-
--- company_profile is created above with the complete JSON columns.
--- The original PostgreSQL TEXT[] -> JSON conversion is unnecessary in MySQL:
--- these columns are defined as JSON from the start, preserving the same data model.
--- Existing Orbit schemas can already contain company_profile with a smaller set
--- of columns. Add the Tender/Research columns without deleting the older Orbit
--- columns (director_name, uei, etc.).
+-- company_profile is created earlier (SECTION 2). The original PostgreSQL TEXT[] -> JSON
+-- conversion is unnecessary in MySQL: these columns are JSON, preserving the same data model.
+-- The existing Orbit table has a smaller set of columns. Add the Tender/Research columns
+-- without deleting the older Orbit columns (director_name, uei, etc.).
 CALL sp_add_column_if_missing('company_profile', 'company_name', 'TEXT');
 CALL sp_add_column_if_missing('company_profile', 'legal_name', 'TEXT');
 CALL sp_add_column_if_missing('company_profile', 'tagline', 'TEXT');
@@ -2170,18 +2091,8 @@ ON DUPLICATE KEY UPDATE
     registrations = VALUES(registrations),
     updated_at = NOW();
 
-CREATE TABLE IF NOT EXISTS pricing_catalog (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    service_name VARCHAR(255) NOT NULL,
-    starting_price TEXT,
-    delivery_time TEXT,
-    amc TEXT,
-    currency VARCHAR(255) NOT NULL DEFAULT 'USD',
-    category VARCHAR(255)
-);
-
--- currency and category are defined directly in the MySQL table below.
--- Older pricing tables may not contain these migration columns.
+-- currency and category are added to the pricing_catalog table created in SECTION 2,
+-- which does not contain these migration columns yet.
 CALL sp_add_column_if_missing('pricing_catalog', 'currency', 'VARCHAR(255) NOT NULL DEFAULT ''USD''');
 CALL sp_add_column_if_missing('pricing_catalog', 'category', 'VARCHAR(255)');
 
@@ -2214,17 +2125,17 @@ VALUES
 ('Custom Web Portal','50000','USD','10–20 Weeks','20%/Year','core'),
 ('Android App','20000','USD','8–12 Weeks','18%/Year','core'),
 ('iOS App','25000','USD','8–14 Weeks','18%/Year','core'),
-('Flutter App','30000','USD','10–16 Weeks','18%/Year','core'),
-('React Native App','30000','USD','10–16 Weeks','18%/Year','core'),
 ('Enterprise Mobile App','60000','USD','3–6 Months','20%/Year','core'),
 ('Document Management System','120000','USD','4–7 Months','18%/Year','core'),
+('UI/UX Design','12000','USD','3–6 Weeks','Optional','core'),
+('AVANYA AI LMS','150000','USD','4–8 Months','20%/Year','core'),
+('AVANYA AI ERP','250000','USD','6–12 Months','20%/Year','core'),
+('Flutter App','30000','USD','10–16 Weeks','18%/Year','core'),
+('React Native App','30000','USD','10–16 Weeks','18%/Year','core'),
 ('Scanning & Digitization','$0.10–$1.00','USD','Volume-Based','Optional','core'),
 ('OCR & Metadata Indexing','35000','USD','6–10 Weeks','15%/Year','core'),
 ('Digital Archiving','90000','USD','3–6 Months','18%/Year','core'),
-('UI/UX Design','12000','USD','3–6 Weeks','Optional','core'),
 ('Figma Prototype','8000','USD','2–4 Weeks','Optional','core'),
-('AVANYA AI LMS','150000','USD','4–8 Months','20%/Year','core'),
-('AVANYA AI ERP','250000','USD','6–12 Months','20%/Year','core'),
 ('Multi-Tenant SaaS Architecture','40000+','USD',NULL,NULL,'addon'),
 ('SCORM/xAPI Integration','10000+','USD',NULL,NULL,'addon'),
 ('Video Streaming Platform Integration','15000+','USD',NULL,NULL,'addon'),
@@ -2287,11 +2198,6 @@ CALL sp_add_column_if_missing(
 CALL sp_create_index_if_missing(
     'company_research', 'idx_company_research_one_latest',
     'CREATE UNIQUE INDEX idx_company_research_one_latest ON company_research(latest_key)'
-);
-
-CALL sp_create_index_if_missing(
-    'company_research', 'idx_company_research_history',
-    'CREATE INDEX idx_company_research_history ON company_research(source, company_id, created_at DESC)'
 );
 
 -- ---------- Company Finding ----------
@@ -2425,11 +2331,6 @@ DELIMITER ;
 -- linking behavior.
 -- Target database: gmfdmmzn_proflow
 -- ============================================================
-
-CREATE DATABASE IF NOT EXISTS gmfdmmzn_proflow;
-USE gmfdmmzn_proflow;
-
-SET SQL_SAFE_UPDATES = 0;
 
 
 -- ---------- 1) Eligibility profiles (one company = one profile) ----------
@@ -2861,10 +2762,7 @@ UNION ALL SELECT 'digitization_scan_runs', COUNT(*) FROM digitization_scan_runs;
 -- Target database: gmfdmmzn_proflow
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS gmfdmmzn_proflow;
-USE gmfdmmzn_proflow;
 SET NAMES utf8mb4;
-SET SQL_SAFE_UPDATES = 0;
 
 -- ============================================================
 -- NOVA CRM — DEMO DATA
@@ -2884,12 +2782,12 @@ START TRANSACTION;
 INSERT INTO customers (company_name, contact_name, email, phone, website, industry, city, state, country, status, owner_id, ceo_name)
 SELECT v.company_name, v.contact_name, v.email, v.phone, v.website, v.industry, v.city, v.state, v.country, v.status, v.owner_id, v.ceo_name
 FROM (
-  SELECT 'Sunrise Logistics Pvt Ltd' AS company_name,'Ravi Deshmukh' AS contact_name,'ravi@sunriselogistics.in' AS email,'+91 9820011223' AS phone,'sunriselogistics.in' AS website,'Logistics' AS industry,'Pune' AS city,'Maharashtra' AS state,'India' AS country,'Active' AS status,'sahil' AS owner_id,'Anil Deshmukh' AS ceo_name
-  UNION ALL SELECT 'BrightPath EdTech','Neha Kulkarni','neha@brightpathedu.com','+91 9822033445','brightpathedu.com','Education','Mumbai','Maharashtra','India','Active','sahil','Suresh Kulkarni'
-  UNION ALL SELECT 'GreenLeaf Foods','Amit Shah','amit@greenleaffoods.in','+91 9812044556','greenleaffoods.in','FMCG','Ahmedabad','Gujarat','India','Active','sahil','Manish Shah'
-  UNION ALL SELECT 'Vertex Manufacturing','Priya Nair','priya@vertexmfg.com','+91 9845055667','vertexmfg.com','Manufacturing','Bengaluru','Karnataka','India','Active','sahil','Rajesh Nair'
-  UNION ALL SELECT 'Coral Hospitality Group','Sanjay Rao','sanjay@coralhg.com','+91 9867066778','coralhg.com','Hospitality','Goa','Goa','India','Prospect','sahil',NULL
-  UNION ALL SELECT 'NimbusTech Solutions','Anjali Mehta','anjali@nimbustech.io','+91 9876077889','nimbustech.io','IT Services','Pune','Maharashtra','India','Prospect','sahil',NULL
+  SELECT 'Sunrise Logistics Pvt Ltd' AS company_name,'Ravi Deshmukh' AS contact_name,'ravi@sunriselogistics.in' AS email,'+91 9820011223' AS phone,'sunriselogistics.in' AS website,'Logistics' AS industry,'Pune' AS city,'Maharashtra' AS state,'India' AS country,'Active' AS status,'gmfdmmzn_proflow' AS owner_id,'Anil Deshmukh' AS ceo_name
+  UNION ALL SELECT 'BrightPath EdTech','Neha Kulkarni','neha@brightpathedu.com','+91 9822033445','brightpathedu.com','Education','Mumbai','Maharashtra','India','Active','gmfdmmzn_proflow','Suresh Kulkarni'
+  UNION ALL SELECT 'GreenLeaf Foods','Amit Shah','amit@greenleaffoods.in','+91 9812044556','greenleaffoods.in','FMCG','Ahmedabad','Gujarat','India','Active','gmfdmmzn_proflow','Manish Shah'
+  UNION ALL SELECT 'Vertex Manufacturing','Priya Nair','priya@vertexmfg.com','+91 9845055667','vertexmfg.com','Manufacturing','Bengaluru','Karnataka','India','Active','gmfdmmzn_proflow','Rajesh Nair'
+  UNION ALL SELECT 'Coral Hospitality Group','Sanjay Rao','sanjay@coralhg.com','+91 9867066778','coralhg.com','Hospitality','Goa','Goa','India','Prospect','gmfdmmzn_proflow',NULL
+  UNION ALL SELECT 'NimbusTech Solutions','Anjali Mehta','anjali@nimbustech.io','+91 9876077889','nimbustech.io','IT Services','Pune','Maharashtra','India','Prospect','gmfdmmzn_proflow',NULL
 ) AS v
 WHERE NOT EXISTS (SELECT 1 FROM customers c WHERE c.company_name = v.company_name);
 
@@ -2914,12 +2812,12 @@ WHERE NOT EXISTS (SELECT 1 FROM products p WHERE p.sku = v.sku);
 INSERT INTO leads (title, source, status, estimated_value, customer_id, notes, assigned_to, score, ai_insight)
 SELECT v.title, v.source, v.status, v.estimated_value, c.id, v.notes, v.assigned_to, v.score, v.ai_insight
 FROM (
-  SELECT 'Sunrise Logistics — Fleet Tracking CRM' AS title,'Website' AS source,'new' AS status,180000 AS estimated_value,'Sunrise Logistics Pvt Ltd' AS customer_name,'Wants fleet + delivery tracking module included' AS notes,'sahil' AS assigned_to,72 AS score,'Strong budget signal, fast follow-up recommended' AS ai_insight
-  UNION ALL SELECT 'BrightPath — Student LMS','Referral','contacted',150000,'BrightPath EdTech','Comparing us against 2 other vendors','sahil',65,'Price-sensitive, emphasize AMC value'
-  UNION ALL SELECT 'GreenLeaf Foods — Inventory System','Cold Call','qualified',30000,'GreenLeaf Foods','Needs barcode scanning support','sahil',58,'Mid-size deal, quick close likely'
-  UNION ALL SELECT 'Vertex Manufacturing — ERP Upgrade','Website','qualified',250000,'Vertex Manufacturing','Migrating off legacy on-prem ERP','sahil',80,'High-value enterprise lead, prioritize'
-  UNION ALL SELECT 'Coral Hospitality — Booking Portal','LinkedIn','new',45000,'Coral Hospitality Group','Multi-property booking requirement','sahil',50,'Early stage, needs discovery call'
-  UNION ALL SELECT 'NimbusTech — Corporate Website Revamp','Referral','new',20000,'NimbusTech Solutions','Wants modern redesign within 6 weeks','sahil',40,'Small deal, fast turnaround expected'
+  SELECT 'Sunrise Logistics — Fleet Tracking CRM' AS title,'Website' AS source,'new' AS status,180000 AS estimated_value,'Sunrise Logistics Pvt Ltd' AS customer_name,'Wants fleet + delivery tracking module included' AS notes,'gmfdmmzn_proflow' AS assigned_to,72 AS score,'Strong budget signal, fast follow-up recommended' AS ai_insight
+  UNION ALL SELECT 'BrightPath — Student LMS','Referral','contacted',150000,'BrightPath EdTech','Comparing us against 2 other vendors','gmfdmmzn_proflow',65,'Price-sensitive, emphasize AMC value'
+  UNION ALL SELECT 'GreenLeaf Foods — Inventory System','Cold Call','qualified',30000,'GreenLeaf Foods','Needs barcode scanning support','gmfdmmzn_proflow',58,'Mid-size deal, quick close likely'
+  UNION ALL SELECT 'Vertex Manufacturing — ERP Upgrade','Website','qualified',250000,'Vertex Manufacturing','Migrating off legacy on-prem ERP','gmfdmmzn_proflow',80,'High-value enterprise lead, prioritize'
+  UNION ALL SELECT 'Coral Hospitality — Booking Portal','LinkedIn','new',45000,'Coral Hospitality Group','Multi-property booking requirement','gmfdmmzn_proflow',50,'Early stage, needs discovery call'
+  UNION ALL SELECT 'NimbusTech — Corporate Website Revamp','Referral','new',20000,'NimbusTech Solutions','Wants modern redesign within 6 weeks','gmfdmmzn_proflow',40,'Small deal, fast turnaround expected'
 ) AS v
 JOIN customers c ON c.company_name = v.customer_name
 WHERE NOT EXISTS (SELECT 1 FROM leads l WHERE l.title = v.title);
@@ -2930,12 +2828,12 @@ WHERE NOT EXISTS (SELECT 1 FROM leads l WHERE l.title = v.title);
 INSERT INTO opportunities (title, customer_id, lead_id, stage, value, probability, expected_close_date, owner, notes)
 SELECT v.title, c.id, l.id, v.stage, v.value, v.probability, v.expected_close_date, v.owner, v.notes
 FROM (
-  SELECT 'Vertex Manufacturing — ERP Upgrade Deal' AS title,'Vertex Manufacturing' AS customer_name,'Vertex Manufacturing — ERP Upgrade' AS lead_title,'Negotiation' AS stage,250000 AS value,70 AS probability,'2026-09-15' AS expected_close_date,'sahil' AS owner,'Final pricing round with procurement team' AS notes
-  UNION ALL SELECT 'GreenLeaf Foods — Inventory Deal','GreenLeaf Foods','GreenLeaf Foods — Inventory System','Proposal',30000,55,'2026-09-05','sahil','Proposal sent, awaiting feedback'
-  UNION ALL SELECT 'BrightPath — LMS Deal','BrightPath EdTech','BrightPath — Student LMS','Qualification',150000,40,'2026-10-01','sahil','Second demo scheduled'
-  UNION ALL SELECT 'Sunrise Logistics — Fleet CRM Deal','Sunrise Logistics Pvt Ltd','Sunrise Logistics — Fleet Tracking CRM','Prospecting',180000,25,'2026-10-20','sahil','Initial discovery call done'
-  UNION ALL SELECT 'Coral Hospitality — Booking Deal','Coral Hospitality Group','Coral Hospitality — Booking Portal','Prospecting',45000,20,'2026-11-01','sahil','Awaiting requirement doc from client'
-  UNION ALL SELECT 'Legacy Client — CRM Renewal','GreenLeaf Foods',NULL,'Closed Won',40000,100,'2026-08-01','sahil','Annual renewal, signed'
+  SELECT 'Vertex Manufacturing — ERP Upgrade Deal' AS title,'Vertex Manufacturing' AS customer_name,'Vertex Manufacturing — ERP Upgrade' AS lead_title,'Negotiation' AS stage,250000 AS value,70 AS probability,'2026-09-15' AS expected_close_date,'gmfdmmzn_proflow' AS owner,'Final pricing round with procurement team' AS notes
+  UNION ALL SELECT 'GreenLeaf Foods — Inventory Deal','GreenLeaf Foods','GreenLeaf Foods — Inventory System','Proposal',30000,55,'2026-09-05','gmfdmmzn_proflow','Proposal sent, awaiting feedback'
+  UNION ALL SELECT 'BrightPath — LMS Deal','BrightPath EdTech','BrightPath — Student LMS','Qualification',150000,40,'2026-10-01','gmfdmmzn_proflow','Second demo scheduled'
+  UNION ALL SELECT 'Sunrise Logistics — Fleet CRM Deal','Sunrise Logistics Pvt Ltd','Sunrise Logistics — Fleet Tracking CRM','Prospecting',180000,25,'2026-10-20','gmfdmmzn_proflow','Initial discovery call done'
+  UNION ALL SELECT 'Coral Hospitality — Booking Deal','Coral Hospitality Group','Coral Hospitality — Booking Portal','Prospecting',45000,20,'2026-11-01','gmfdmmzn_proflow','Awaiting requirement doc from client'
+  UNION ALL SELECT 'Legacy Client — CRM Renewal','GreenLeaf Foods',NULL,'Closed Won',40000,100,'2026-08-01','gmfdmmzn_proflow','Annual renewal, signed'
 ) AS v
 JOIN customers c ON c.company_name = v.customer_name
 LEFT JOIN leads l ON l.title = v.lead_title
@@ -2947,9 +2845,9 @@ WHERE NOT EXISTS (SELECT 1 FROM opportunities o WHERE o.title = v.title);
 INSERT INTO documents (file_name, category, customer_id, uploaded_by, file_url, size_kb, is_shared)
 SELECT v.file_name, v.category, c.id, v.uploaded_by, v.file_url, v.size_kb, v.is_shared
 FROM (
-  SELECT 'Vertex_Manufacturing_Requirements.pdf' AS file_name,'Report' AS category,'Vertex Manufacturing' AS customer_name,'sahil' AS uploaded_by,'/files/vertex_requirements.pdf' AS file_url,842 AS size_kb,TRUE AS is_shared
-  UNION ALL SELECT 'GreenLeaf_Inventory_Scope.docx','Report','GreenLeaf Foods','sahil','/files/greenleaf_scope.docx',310,FALSE
-  UNION ALL SELECT 'BrightPath_LMS_Wireframes.pdf','Other','BrightPath EdTech','sahil','/files/brightpath_wireframes.pdf',1200,TRUE
+  SELECT 'Vertex_Manufacturing_Requirements.pdf' AS file_name,'Report' AS category,'Vertex Manufacturing' AS customer_name,'gmfdmmzn_proflow' AS uploaded_by,'/files/vertex_requirements.pdf' AS file_url,842 AS size_kb,TRUE AS is_shared
+  UNION ALL SELECT 'GreenLeaf_Inventory_Scope.docx','Report','GreenLeaf Foods','gmfdmmzn_proflow','/files/greenleaf_scope.docx',310,FALSE
+  UNION ALL SELECT 'BrightPath_LMS_Wireframes.pdf','Other','BrightPath EdTech','gmfdmmzn_proflow','/files/brightpath_wireframes.pdf',1200,TRUE
 ) AS v
 JOIN customers c ON c.company_name = v.customer_name
 WHERE NOT EXISTS (SELECT 1 FROM documents d WHERE d.file_name = v.file_name);
@@ -2960,8 +2858,8 @@ WHERE NOT EXISTS (SELECT 1 FROM documents d WHERE d.file_name = v.file_name);
 INSERT INTO contracts (contract_number, customer_id, start_date, end_date, status, value, sales_owner, notes)
 SELECT v.contract_number, c.id, v.start_date, v.end_date, v.status, v.value, v.sales_owner, v.notes
 FROM (
-  SELECT 'CNT-2026-001' AS contract_number,'GreenLeaf Foods' AS customer_name,'2026-08-01' AS start_date,'2027-07-31' AS end_date,'Active' AS status,40000 AS value,'sahil' AS sales_owner,'Annual CRM renewal contract' AS notes
-  UNION ALL SELECT 'CNT-2026-002','Vertex Manufacturing','2026-09-20','2027-09-19','Draft',250000,'sahil','Pending final signature'
+  SELECT 'CNT-2026-001' AS contract_number,'GreenLeaf Foods' AS customer_name,'2026-08-01' AS start_date,'2027-07-31' AS end_date,'Active' AS status,40000 AS value,'gmfdmmzn_proflow' AS sales_owner,'Annual CRM renewal contract' AS notes
+  UNION ALL SELECT 'CNT-2026-002','Vertex Manufacturing','2026-09-20','2027-09-19','Draft',250000,'gmfdmmzn_proflow','Pending final signature'
 ) AS v
 JOIN customers c ON c.company_name = v.customer_name
 WHERE NOT EXISTS (SELECT 1 FROM contracts ct WHERE ct.contract_number = v.contract_number);
@@ -2972,8 +2870,8 @@ WHERE NOT EXISTS (SELECT 1 FROM contracts ct WHERE ct.contract_number = v.contra
 INSERT INTO proposal_files (proposal_number, customer_id, opportunity, created_by, status, version, file_url)
 SELECT v.proposal_number, c.id, v.opportunity, v.created_by, v.status, v.version, v.file_url
 FROM (
-  SELECT 'PROP-2026-101' AS proposal_number,'Vertex Manufacturing' AS customer_name,'Vertex Manufacturing — ERP Upgrade Deal' AS opportunity,'sahil' AS created_by,'Sent' AS status,2 AS version,'/files/prop_vertex_erp_v2.pdf' AS file_url
-  UNION ALL SELECT 'PROP-2026-102','GreenLeaf Foods','GreenLeaf Foods — Inventory Deal','sahil','Draft',1,'/files/prop_greenleaf_inv_v1.pdf'
+  SELECT 'PROP-2026-101' AS proposal_number,'Vertex Manufacturing' AS customer_name,'Vertex Manufacturing — ERP Upgrade Deal' AS opportunity,'gmfdmmzn_proflow' AS created_by,'Sent' AS status,2 AS version,'/files/prop_vertex_erp_v2.pdf' AS file_url
+  UNION ALL SELECT 'PROP-2026-102','GreenLeaf Foods','GreenLeaf Foods — Inventory Deal','gmfdmmzn_proflow','Draft',1,'/files/prop_greenleaf_inv_v1.pdf'
 ) AS v
 JOIN customers c ON c.company_name = v.customer_name
 WHERE NOT EXISTS (SELECT 1 FROM proposal_files pf WHERE pf.proposal_number = v.proposal_number);
@@ -2984,9 +2882,9 @@ WHERE NOT EXISTS (SELECT 1 FROM proposal_files pf WHERE pf.proposal_number = v.p
 INSERT INTO customer_files (customer_id, document_type, file_url, uploaded_by, expiry_date, status)
 SELECT c.id, v.document_type, v.file_url, v.uploaded_by, v.expiry_date, v.status
 FROM (
-  SELECT 'Vertex Manufacturing' AS customer_name,'GST Certificate' AS document_type,'/files/vertex_gst.pdf' AS file_url,'sahil' AS uploaded_by,'2027-03-31' AS expiry_date,'Approved' AS status
-  UNION ALL SELECT 'GreenLeaf Foods','PAN Card','/files/greenleaf_pan.pdf','sahil',NULL,'Approved'
-  UNION ALL SELECT 'BrightPath EdTech','Company Registration','/files/brightpath_incorp.pdf','sahil',NULL,'Pending'
+  SELECT 'Vertex Manufacturing' AS customer_name,'GST Certificate' AS document_type,'/files/vertex_gst.pdf' AS file_url,'gmfdmmzn_proflow' AS uploaded_by,'2027-03-31' AS expiry_date,'Approved' AS status
+  UNION ALL SELECT 'GreenLeaf Foods','PAN Card','/files/greenleaf_pan.pdf','gmfdmmzn_proflow',NULL,'Approved'
+  UNION ALL SELECT 'BrightPath EdTech','Company Registration','/files/brightpath_incorp.pdf','gmfdmmzn_proflow',NULL,'Pending'
 ) AS v
 JOIN customers c ON c.company_name = v.customer_name
 WHERE NOT EXISTS (
@@ -3274,8 +3172,75 @@ SHOW DATABASES;
 
 UPDATE crm_users
 SET email_verified = 1
-WHERE email = 'sahilrale15022005@gmail.com';
+WHERE email = 'gmfdmmzn_proflowrale15022005@gmail.com';
 
 SELECT email, email_verified
 FROM crm_users
-WHERE email = 'sahilrale15022005@gmail.com';
+WHERE email = 'gmfdmmzn_proflowrale15022005@gmail.com';
+
+ALTER TABLE customers ADD COLUMN segment VARCHAR(50) NULL AFTER industry;
+
+-- ============================================================
+-- Fix: columns/table that server.js expects but database/ProFlow.sql
+-- never defined for MySQL. Uses information_schema + PREPARE/EXECUTE
+-- instead of "ADD COLUMN IF NOT EXISTS" / "ADD INDEX IF NOT EXISTS",
+-- because those need MySQL 8.0.29+ and your Aiven instance rejected
+-- them (Error 1064). This version works on any MySQL 5.7+ / MariaDB.
+-- Safe to re-run: every block checks before acting.
+-- ============================================================
+
+-- 1. customers.selected_for_proposal
+--    Fixes: Unknown column 'selected_for_proposal' in 'field list'
+SET @dbname = DATABASE();
+SET @tablename = 'customers';
+SET @columnname = 'selected_for_proposal';
+SET @sql = (SELECT IF(
+  (SELECT COUNT(*) FROM information_schema.COLUMNS
+     WHERE table_schema = @dbname AND table_name = @tablename AND column_name = @columnname) > 0,
+  'SELECT 1',
+  'ALTER TABLE customers ADD COLUMN selected_for_proposal TINYINT(1) NOT NULL DEFAULT 0'
+));
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @indexname = 'idx_customers_selected';
+SET @sql = (SELECT IF(
+  (SELECT COUNT(*) FROM information_schema.STATISTICS
+     WHERE table_schema = @dbname AND table_name = @tablename AND index_name = @indexname) > 0,
+  'SELECT 1',
+  'ALTER TABLE customers ADD INDEX idx_customers_selected (selected_for_proposal)'
+));
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+-- 2. tender_customers.selected_for_proposal
+--    trackingserver.js already self-heals this at startup — this just
+--    means a fresh database doesn't depend on that code path running first.
+SET @tablename = 'tender_customers';
+SET @columnname = 'selected_for_proposal';
+SET @sql = (SELECT IF(
+  (SELECT COUNT(*) FROM information_schema.COLUMNS
+     WHERE table_schema = @dbname AND table_name = @tablename AND column_name = @columnname) > 0,
+  'SELECT 1',
+  'ALTER TABLE tender_customers ADD COLUMN selected_for_proposal TINYINT(1) NOT NULL DEFAULT 0'
+));
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @indexname = 'idx_tender_customers_selected';
+SET @sql = (SELECT IF(
+  (SELECT COUNT(*) FROM information_schema.STATISTICS
+     WHERE table_schema = @dbname AND table_name = @tablename AND index_name = @indexname) > 0,
+  'SELECT 1',
+  'ALTER TABLE tender_customers ADD INDEX idx_tender_customers_selected (selected_for_proposal)'
+));
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+-- 3. email_capture_settings
+--    Fixes: Table 'gmfdmmzn_proflow.email_capture_settings' doesn't exist
+--    CREATE TABLE IF NOT EXISTS is supported everywhere, no prepare needed.
+CREATE TABLE IF NOT EXISTS email_capture_settings (
+  id INT PRIMARY KEY DEFAULT 1,
+  enabled BOOLEAN NOT NULL DEFAULT TRUE,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT email_capture_settings_singleton CHECK (id = 1)
+);
+INSERT IGNORE INTO email_capture_settings (id, enabled) VALUES (1, TRUE);
